@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:onClick="onHomeLayout"
     android:orientation="vertical"
     tools:context=".PreferenceActivity">
 
@@ -18,18 +19,21 @@
         android:id="@+id/preference_check_homelayout_img"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="onHomeLayout"
         android:text="@string/homelayout_img_option" />
 
     <CheckBox
         android:id="@+id/preference_check_homelayout_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="onHomeLayout"
         android:text="@string/homelayout_btn_option" />
 
-    <RadioButton
-        android:id="@+id/preference_radio_homelayout_smallimg"
+    <CheckBox
+        android:id="@+id/preference_check_homelayout_smallimg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/homelayout_smallimg_option"/>
+        android:onClick="onHomeLayout"
+        android:text="@string/homelayout_smallimg_option" />
 
 </LinearLayout>

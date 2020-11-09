@@ -9,4 +9,5 @@
     <dimen name="home_divider_margintop">16dp</dimen>
     <dimen name="home_divider_marginside">24dp</dimen>
     <dimen name="divider_height">2dp</dimen>
+    <dimen name="home_smallimg_padding">16dp</dimen>
 </resources>
