@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="splash_progress_bottommargin">80dp</dimen>
+    <dimen name="splash_img_width">320dp</dimen>
+    <dimen name="splash_img_height">125dp</dimen>
+    <dimen name="home_img_margintop">20dp</dimen>
+    <dimen name="home_button_margintop">8dp</dimen>
+    <dimen name="home_button_width">260dp</dimen>
+    <dimen name="home_divider_margintop">16dp</dimen>
+    <dimen name="home_divider_marginside">24dp</dimen>
+    <dimen name="divider_height">2dp</dimen>
+</resources>

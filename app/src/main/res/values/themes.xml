@@ -1,0 +1,35 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.LinkenUp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+    <item name="colorPrimary">@color/gray</item>
+        <item name="colorPrimaryVariant">@color/black</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/highblue</item>
+        <item name="colorSecondaryVariant">@color/lowblue</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSurface">@color/lightgray</item>
+        <!-- Accent color. -->
+        <item name="colorAccent">@color/purple</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+        <item name="materialButtonStyle">@style/Theme.LinkenUp.Button</item>
+    </style>
+    <style name="Theme.LinkenUp.ToolBar">
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="titleTextColor">?attr/colorOnPrimary</item>
+    </style>
+    <style name="Theme.LinkenUp.Button" parent="@style/Widget.AppCompat.Button">
+        <item name="android:backgroundTint">?colorSecondaryVariant</item>
+        <item name="android:textColor">?colorOnSecondary</item>
+    </style>
+    <style name="Theme.LinkenUp.Splash" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:background">@drawable/background_splash_day</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+    </style>
+    <style name="Theme.LinkenUp.SecondBackground" parent="Theme.LinkenUp">
+        <item name="android:windowBackground">?attr/colorSurface</item>
+    </style>
+</resources>

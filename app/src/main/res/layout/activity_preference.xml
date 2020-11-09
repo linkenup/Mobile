@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".PreferenceActivity">
+
+    <TextView
+        android:id="@+id/preference_text_homelayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/homelayout_title" />
+
+    <CheckBox
+        android:id="@+id/preference_check_homelayout_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/homelayout_img_option" />
+
+    <CheckBox
+        android:id="@+id/preference_check_homelayout_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/homelayout_btn_option" />
+
+    <RadioButton
+        android:id="@+id/preference_radio_homelayout_smallimg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/homelayout_smallimg_option"/>
+
+</LinearLayout>

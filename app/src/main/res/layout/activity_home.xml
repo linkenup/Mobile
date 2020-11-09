@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="false"
+    tools:context=".HomeActivity">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/home_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:theme="@style/Theme.LinkenUp.ToolBar"
+        app:title="@string/toolbar_company_title"
+        app:titleTextColor="?attr/colorOnPrimary" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/home_toolbar">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/home_img_client"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="@dimen/home_img_margintop"
+                android:clickable="true"
+                android:contentDescription="@string/client"
+                android:onClick="onClient"
+                app:srcCompat="@drawable/ic_client_260" />
+
+            <ImageView
+                android:id="@+id/home_img_relatory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/home_divider_first"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/home_img_margintop"
+                android:clickable="true"
+                android:contentDescription="@string/client"
+                android:onClick="onClient"
+                app:srcCompat="@drawable/ic_relatory_260" />
+
+            <Button
+                android:id="@+id/home_button_client"
+                android:layout_width="@dimen/home_button_width"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/home_img_client"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/home_button_margintop"
+                android:onClick="onClient"
+                android:text="@string/client" />
+
+            <Button
+                android:id="@+id/home_button_relatory"
+                android:layout_width="@dimen/home_button_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/home_button_margintop"
+                android:onClick="onClient"
+                android:layout_below="@id/home_img_relatory"
+                android:layout_centerHorizontal="true"
+                android:text="@string/relatory" />
+
+            <Button
+                android:id="@+id/home_button_preference"
+                android:layout_width="@dimen/home_button_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/home_button_margintop"
+                android:onClick="onPreference"
+                android:layout_below="@id/home_divider_second"
+                android:layout_centerHorizontal="true"
+                android:text="@string/preferences" />
+
+            <View
+                android:id="@+id/home_divider_first"
+                android:layout_width="match_parent"
+                android:layout_below="@id/home_button_client"
+                android:layout_height="@dimen/divider_height"
+                android:layout_marginStart="@dimen/home_divider_marginside"
+                android:layout_marginTop="@dimen/home_divider_margintop"
+                android:layout_marginEnd="@dimen/home_divider_marginside"
+                android:background="@color/lightgray2"
+                android:visibility="visible" />
+
+            <View
+                android:id="@+id/home_divider_second"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_height"
+                android:layout_below="@id/home_button_relatory"
+                android:layout_marginStart="@dimen/home_divider_marginside"
+                android:layout_marginTop="@dimen/home_divider_margintop"
+                android:layout_marginEnd="@dimen/home_divider_marginside"
+                android:background="@color/lightgray2"
+                android:visibility="visible" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

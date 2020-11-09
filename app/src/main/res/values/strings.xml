@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">LinkenUp</string>
+    <string name="toolbar_company_title">LinkenUp</string>
+    <string name="client">Cliente</string>
+    <string name="relatory">Relatório</string>
+    <string name="preferences">Preferências</string>
+    <string name="homelayout_title">Navegação na tela principal</string>
+    <string name="homelayout_img_option">Imagens</string>
+    <string name="homelayout_btn_option">Botões</string>
+    <string name="homelayout_smallimg_option">Ícones pequenos</string>
+</resources>
