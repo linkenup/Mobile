@@ -22,7 +22,7 @@
     </style>
     <style name="Theme.LinkenUp.Splash" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:background">@drawable/background_splash_night</item>
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
     </style>
     <style name="Theme.LinkenUp.ToolBar" parent="Theme.LinkenUp">
         <item name="android:background">?attr/colorPrimaryVariant</item>
