@@ -36,4 +36,11 @@
         android:onClick="onHomeLayout"
         android:text="@string/homelayout_smallimg_option" />
 
+    <Switch
+        android:id="@+id/preference_switch_theme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/theme_switch"
+        android:onClick="onTheme"/>
+
 </LinearLayout>

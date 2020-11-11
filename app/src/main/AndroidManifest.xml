@@ -9,12 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LinkenUp">
-        <activity android:name=".PreferenceActivity"/>
+        <activity android:name=".MapActivity"></activity>
+        <activity android:name=".OpenClientActivity" />
+        <activity android:name=".PreferenceActivity" />
         <activity android:name=".HomeActivity" />
         <activity
             android:name=".SplashActivity"
             android:noHistory="true"
-            android:theme="@style/Theme.LinkenUp.Splash">
+            android:theme="@style/Theme.LinkenUp.SplashBoot">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

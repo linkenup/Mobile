@@ -8,4 +8,5 @@
     <string name="homelayout_img_option">Imagens</string>
     <string name="homelayout_btn_option">Botões</string>
     <string name="homelayout_smallimg_option">Ícones pequenos</string>
+    <string name="theme_switch">Tema</string>
 </resources>

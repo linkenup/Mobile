@@ -1,6 +1,7 @@
 package com.example.linkenup;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,19 +9,26 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
+import android.widget.Switch;
 
 public class PreferenceActivity extends AppCompatActivity {
-    boolean home_imgVisible,home_btnVisible,home_smallimg;
+    public static final String THEME = "LinkenUp.theme";
+    boolean
+            home_imgVisible,home_btnVisible,home_smallimg,
+            theme;
 
     CheckBox chkHomeLayout_img,chkHomeLayout_btn,chkHomeLayout_smallimg;
+    Switch switchTheme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preference);
+
         chkHomeLayout_img = (CheckBox) findViewById(R.id.preference_check_homelayout_img);
         chkHomeLayout_btn = (CheckBox) findViewById(R.id.preference_check_homelayout_btn);
         chkHomeLayout_smallimg = (CheckBox) findViewById(R.id.preference_check_homelayout_smallimg);
+        switchTheme = (Switch) findViewById(R.id.preference_switch_theme);
 
         SharedPreferences homeLayout = getSharedPreferences(HomeActivity.LAYOUT_PREFERENCE_NAME,0);
 
@@ -36,17 +44,28 @@ public class PreferenceActivity extends AppCompatActivity {
         home_btnVisible = btn;
         home_smallimg = smallimg;
 
+        SharedPreferences themePreference = getSharedPreferences(THEME,0);
+
+        theme = themePreference.getBoolean("theme",false);
+        switchTheme.setChecked(theme);
+
+
     }
 
     public void updatePreferences(String preference)
     {
+    SharedPreferences.Editor setting;
     switch (preference)
     {
         case "homelayout":
-            SharedPreferences.Editor setting = getSharedPreferences(HomeActivity.LAYOUT_PREFERENCE_NAME,0).edit();
+            setting = getSharedPreferences(HomeActivity.LAYOUT_PREFERENCE_NAME,0).edit();
             setting.putBoolean("img",home_imgVisible);
             setting.putBoolean("btn",home_btnVisible);
             setting.putBoolean("smallimg",home_smallimg);
+            setting.commit();
+        case "theme":
+            setting = getSharedPreferences(THEME,0).edit();
+            setting.putBoolean("theme",theme);
             setting.commit();
             break;
     }
@@ -88,6 +107,17 @@ public class PreferenceActivity extends AppCompatActivity {
 
 
         updatePreferences("homelayout");
+    }
+
+    public void onTheme(View view)
+    {
+        theme = ((Switch)view).isChecked();
+        if(theme)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        else
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+        updatePreferences("theme");
     }
 
     @Override
