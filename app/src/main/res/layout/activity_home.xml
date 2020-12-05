@@ -7,6 +7,26 @@
     android:focusable="false"
     tools:context=".HomeActivity">
 
+    <!--<View
+    android:id="@+id/home_divider_first0"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/divider_height"
+    android:layout_below="@id/home_button_client"
+    android:layout_marginStart="@dimen/home_divider_marginside"
+    android:layout_marginTop="@dimen/home_divider_margintop"
+    android:layout_marginEnd="@dimen/home_divider_marginside"
+    android:background="@color/strongblue"
+    android:visibility="visible" />
+<View
+android:id="@+id/home_divider_first1"
+android:layout_width="match_parent"
+android:layout_height="@dimen/divider_height"
+android:layout_below="@id/home_divider_first0"
+android:layout_marginStart="@dimen/home_divider_marginside"
+android:layout_marginEnd="@dimen/home_divider_marginside"
+android:background="@color/purple"
+android:visibility="visible" />-->
+
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/home_toolbar"
@@ -15,28 +35,30 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
         android:theme="@style/Theme.LinkenUp.ToolBar"
-        app:title="@string/toolbar_company_title"
+        app:title="@string/app_name"
         app:titleTextColor="?attr/colorOnPrimary" />
 
     <ScrollView
         android:id="@+id/home_scroll_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/home_toolbar"
         android:visibility="visible">
 
-        <RelativeLayout
-            android:id="@+id/home_relative_main"
+
+        <LinearLayout
+            android:id="@+id/home_linear_main"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/home_img_client"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/home_img_margintop"
+                android:focusable="true"
                 android:clickable="true"
                 android:contentDescription="@string/client"
                 android:onClick="onClient"
@@ -44,126 +66,426 @@
 
             <Button
                 android:id="@+id/home_button_client"
-                android:layout_width="@dimen/home_button_width"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/home_img_client"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/home_button_margintop"
                 android:onClick="onClient"
-                android:text="@string/client" />
+                android:text="@string/client"
+                android:theme="@style/Theme.LinkenUp.Button"
+                style="@style/Button"/>
 
-            <View
+            <include
                 android:id="@+id/home_divider_first"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/divider_height"
-                android:layout_below="@id/home_button_client"
-                android:layout_marginStart="@dimen/home_divider_marginside"
-                android:layout_marginTop="@dimen/home_divider_margintop"
-                android:layout_marginEnd="@dimen/home_divider_marginside"
-                android:background="@color/lightgray2"
-                android:visibility="visible" />
-
-            <ImageView
-                android:id="@+id/home_img_relatory"
+                layout="@layout/include_divider"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/home_divider_first"
-                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/home_divider_margintop" />
+
+
+            <ImageView
+                android:id="@+id/home_img_worker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/home_img_margintop"
                 android:clickable="true"
-                android:contentDescription="@string/client"
-                android:onClick="onClient"
-                app:srcCompat="@drawable/ic_relatory_260" />
+                android:contentDescription="@string/worker"
+                android:focusable="true"
+                android:onClick="onWorker"
+                app:srcCompat="@drawable/ic_worker_260" />
 
             <Button
-                android:id="@+id/home_button_relatory"
-                android:layout_width="@dimen/home_button_width"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/home_img_relatory"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/home_button_margintop"
-                android:onClick="onClient"
-                android:text="@string/relatory" />
+                android:id="@+id/home_button_worker"
+                android:onClick="onWorker"
+                android:text="@string/worker"
+                android:theme="@style/Theme.LinkenUp.Button"
+                style="@style/Button"/>
 
-            <View
+            <include
                 android:id="@+id/home_divider_second"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/divider_height"
-                android:layout_below="@id/home_button_relatory"
-                android:layout_marginStart="@dimen/home_divider_marginside"
-                android:layout_marginTop="@dimen/home_divider_margintop"
-                android:layout_marginEnd="@dimen/home_divider_marginside"
-                android:background="@color/lightgray2"
-                android:visibility="visible" />
+                layout="@layout/include_divider"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/home_divider_margintop" />
+
+            <ImageView
+                android:id="@+id/home_img_software"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/home_img_margintop"
+                android:clickable="true"
+                android:contentDescription="@string/software"
+                android:focusable="true"
+                android:onClick="onSoftware"
+                app:srcCompat="@drawable/ic_software_260" />
+
+            <Button
+                android:id="@+id/home_button_software"
+                android:onClick="onSoftware"
+                style="@style/Button"
+                android:text="@string/software"
+                android:theme="@style/Theme.LinkenUp.Button"
+                />
+
+            <include
+                android:id="@+id/home_divider_second"
+                layout="@layout/include_divider"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/home_divider_margintop" />
+
+            <ImageView
+                android:id="@+id/home_img_contract"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/home_img_margintop"
+                android:clickable="true"
+                android:contentDescription="@string/contract"
+                android:focusable="true"
+                android:onClick="onContract"
+                app:srcCompat="@drawable/ic_contract_260" />
+
+            <Button
+                android:id="@+id/home_button_contract"
+                android:onClick="onContract"
+                android:text="@string/contract"
+                android:theme="@style/Theme.LinkenUp.Button"
+                style="@style/Button" />
+
+            <include
+                android:id="@+id/home_divider_third"
+                layout="@layout/include_divider"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/home_divider_margintop" />
 
             <ImageView
                 android:id="@+id/home_img_preference"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/home_divider_second"
-                android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/home_img_margintop"
                 android:clickable="true"
                 android:contentDescription="@string/client"
+                android:focusable="true"
                 android:onClick="onPreference"
                 app:srcCompat="@drawable/ic_preference_260" />
 
             <Button
                 android:id="@+id/home_button_preference"
-                android:layout_width="@dimen/home_button_width"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/home_img_preference"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/home_button_margintop"
                 android:onClick="onPreference"
-                android:text="@string/preferences" />relatory
+                android:text="@string/preferences"
+                android:theme="@style/Theme.LinkenUp.Button"
+                style="@style/Button" />
 
 
-        </RelativeLayout>
+        </LinearLayout>
     </ScrollView>
 
-    <GridLayout
-        android:id="@+id/home_layout_smallimg"
+    <LinearLayout
+        android:id="@+id/home_more_buttons"
+        android:visibility="gone"
+        android:layout_below="@id/home_scroll_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/home_button_newclient"
+            android:onClick="onNewClient"
+            android:text="@string/newclient"
+            android:layout_width="@dimen/large_button_width"
+            android:theme="@style/Theme.LinkenUp.Button"
+            style="@style/Button" />
+        <Button
+            android:id="@+id/home_button_newworker"
+            android:onClick="onNewWorker"
+            android:text="@string/newworker"
+            android:layout_width="@dimen/large_button_width"
+            android:maxLines="1"
+            android:theme="@style/Theme.LinkenUp.Button"
+            style="@style/Button" />
+        <Button
+            android:id="@+id/home_button_newsoftware"
+            android:onClick="onNewSoftware"
+            android:text="@string/newsoftware"
+            android:theme="@style/Theme.LinkenUp.Button"
+            android:layout_width="@dimen/large_button_width"
+            style="@style/Button" />
+        <Button
+            android:id="@+id/home_button_newcontract"
+            android:onClick="onNewContract"
+            android:text="@string/newcontract"
+            android:theme="@style/Theme.LinkenUp.Button"
+            android:layout_width="@dimen/large_button_width"
+            style="@style/Button" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/home_edit_smallimg"
+        style="@style/Field.Edit"
         android:layout_below="@id/home_toolbar"
-        android:alignmentMode="alignMargins"
+        android:visibility="gone"/>
+    <GridLayout
+        android:id="@+id/home_layout_smallimg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/home_edit_smallimg"
+        android:layout_centerHorizontal="true"
         android:columnCount="4"
-        android:padding="@dimen/home_smallimg_padding"
-        android:useDefaultMargins="true"
         android:visibility="gone">
 
         <ImageButton
             android:id="@+id/home_smallimg_client"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_client_24" />
+            android:contentDescription="@string/client"
+            app:srcCompat="@drawable/ic_client_48"
+            android:backgroundTint="?colorSecondaryVariant"
+            android:onClick="onClient"
+            android:layout_margin="@dimen/smallimg_margin"
+            />
+
+        <Button
+            android:layout_margin="@dimen/smallimg_margin"
+            android:id="@+id/home_smallimg_clientID"
+            android:layout_width="@dimen/smalltxt_size"
+            android:layout_height="@dimen/smalltxt_size"
+            android:backgroundTint="?colorSecondaryVariant"
+            android:onClick="onByID"
+            android:text="@string/id"
+            app:cornerRadius="@dimen/smallimg_radius"
+            android:textAllCaps="true"
+            android:textColor="@color/home_smallimg_text"
+            android:textSize="@dimen/smallimg_textSize"
+            android:textStyle="bold"/>
 
         <ImageButton
-            android:id="@+id/home_smallimg_relatory"
+            android:id="@+id/home_smallimg_addclient"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_relatory_24" />
+            android:contentDescription="@string/newclient"
+            app:srcCompat="@drawable/ic_plus_48"
+            android:backgroundTint="?colorSecondaryVariant"
+            android:onClick="onNewClient"
+            android:layout_margin="@dimen/smallimg_margin"
+            />
 
         <ImageButton
+            android:id="@+id/home_smallimg_removeclient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/remove"
+            app:srcCompat="@drawable/ic_x_48"
+            android:backgroundTint="?colorSecondaryVariant"
+            android:onClick="onRemove"
+            android:layout_margin="@dimen/smallimg_margin"
+            />
+
+        <ImageButton
+            android:id="@+id/home_smallimg_worker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/worker"
+            app:srcCompat="@drawable/ic_worker_48"
+            android:layout_margin="@dimen/smallimg_margin"
+            app:cornerRadius="@dimen/smallimg_radius"
+            android:backgroundTint="?colorSecondaryVariant"
+            android:onClick="onWorker"
+            />
+        <Button
+            android:layout_margin="@dimen/smallimg_margin"
+            android:id="@+id/home_smallimg_workerID"
+            android:layout_width="@dimen/smalltxt_size"
+            android:layout_height="@dimen/smalltxt_size"
+            android:backgroundTint="?colorSecondaryVariant"
+            android:onClick="onByID"
+            android:text="@string/id"
+            app:cornerRadius="@dimen/smallimg_radius"
+            android:textAllCaps="true"
+            android:textColor="@color/home_smallimg_text"
+            android:textSize="@dimen/smallimg_textSize"
+            android:textStyle="bold"/>
+
+        <ImageButton
+            android:id="@+id/home_smallimg_addworker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/newclient"
+            app:srcCompat="@drawable/ic_plus_48"
+            android:backgroundTint="?colorSecondaryVariant"
+            android:onClick="onNewWorker"
+            android:layout_margin="@dimen/smallimg_margin"
+            />
+
+        <ImageButton
+            android:id="@+id/home_smallimg_removeworker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/remove"
+            app:srcCompat="@drawable/ic_x_48"
+            android:backgroundTint="?colorSecondaryVariant"
+            android:onClick="onRemove"
+            android:layout_margin="@dimen/smallimg_margin"
+            />
+
+        <ImageButton
+            android:layout_margin="@dimen/smallimg_margin"
+            android:id="@+id/home_smallimg_software"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onSoftware"
+            app:srcCompat="@drawable/ic_software_48"
+            android:backgroundTint="?colorSecondaryVariant"
+            />
+
+        <Button
+            android:layout_margin="@dimen/smallimg_margin"
+            android:id="@+id/home_smallimg_softwareID"
+            android:layout_width="@dimen/smalltxt_size"
+            android:layout_height="@dimen/smalltxt_size"
+            android:backgroundTint="?colorSecondaryVariant"
+            android:onClick="onByID"
+            android:text="@string/id"
+            app:cornerRadius="@dimen/smallimg_radius"
+            android:textAllCaps="true"
+            android:textColor="@color/home_smallimg_text"
+            android:textSize="@dimen/smallimg_textSize"
+            android:textStyle="bold"/>
+
+        <ImageButton
+            android:id="@+id/home_smallimg_addsoftware"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/newclient"
+            app:srcCompat="@drawable/ic_plus_48"
+            android:backgroundTint="?colorSecondaryVariant"
+            android:onClick="onNewSoftware"
+            android:layout_margin="@dimen/smallimg_margin"
+            />
+
+        <ImageButton
+            android:id="@+id/home_smallimg_removesoftware"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/remove"
+            app:srcCompat="@drawable/ic_x_48"
+            android:backgroundTint="?colorSecondaryVariant"
+            android:onClick="onRemove"
+            android:layout_margin="@dimen/smallimg_margin"
+            />
+
+        <ImageButton
+            android:layout_margin="@dimen/smallimg_margin"
+            android:id="@+id/home_smallimg_contract"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_contract_48"
+            android:backgroundTint="?colorSecondaryVariant"
+            android:onClick="onContract"
+            />
+
+        <Button
+            android:layout_margin="@dimen/smallimg_margin"
+            android:id="@+id/home_smallimg_contractID"
+            android:layout_width="@dimen/smalltxt_size"
+            android:layout_height="@dimen/smalltxt_size"
+            android:backgroundTint="?colorSecondaryVariant"
+            android:onClick="onByID"
+            android:text="@string/id"
+            app:cornerRadius="@dimen/smallimg_radius"
+            android:textAllCaps="true"
+            android:textColor="@color/home_smallimg_text"
+            android:textSize="@dimen/smallimg_textSize"
+            android:textStyle="bold"/>
+
+        <ImageButton
+            android:id="@+id/home_smallimg_addcontract"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/newclient"
+            app:srcCompat="@drawable/ic_plus_48"
+            android:backgroundTint="?colorSecondaryVariant"
+            android:onClick="onNewContract"
+            android:layout_margin="@dimen/smallimg_margin"
+            />
+
+        <ImageButton
+            android:id="@+id/home_smallimg_removecontract"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/remove"
+            app:srcCompat="@drawable/ic_x_48"
+            android:backgroundTint="?colorSecondaryVariant"
+            android:onClick="onRemove"
+            android:layout_margin="@dimen/smallimg_margin"
+            />
+
+        <ImageButton
+            android:id="@+id/home_smallimg_director"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/remove"
+            app:srcCompat="@drawable/ic_director_48"
+            android:backgroundTint="?colorSecondaryVariant"
+            android:onClick="onDirector"
+            android:layout_margin="@dimen/smallimg_margin"
+            />
+
+        <Button
+            android:layout_margin="@dimen/smallimg_margin"
+            android:id="@+id/home_smallimg_directorID"
+            android:layout_width="@dimen/smalltxt_size"
+            android:layout_height="@dimen/smalltxt_size"
+            android:backgroundTint="?colorSecondaryVariant"
+            android:onClick="onByID"
+            android:text="@string/id"
+            app:cornerRadius="@dimen/smallimg_radius"
+            android:textAllCaps="true"
+            android:textColor="@color/home_smallimg_text"
+            android:textSize="@dimen/smallimg_textSize"
+            android:textStyle="bold"/>
+
+        <ImageButton
+            android:layout_margin="@dimen/smallimg_margin"
             android:id="@+id/home_smallimg_preference"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_preference_48"
             android:onClick="onPreference"
-            app:srcCompat="@drawable/ic_preference_24" />
-
-        <ImageButton
-            android:id="@+id/home_smallimg_preference2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_preference_24" />
-
-        <ImageButton
-            android:id="@+id/home_smallimg_preference3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_preference_24" />
+            android:backgroundTint="?colorSecondaryVariant"/>
 
     </GridLayout>
+
+    <!--
+    <View
+                    android:id="@+id/home_divider_first_0"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/divider_height"
+                    android:layout_marginTop="@dimen/home_divider_margintop"
+                    android:layout_marginEnd="@dimen/home_divider_marginside"
+                    android:background="@color/lightgray2"
+                    android:visibility="visible" />
+
+
+
+                <View
+                    android:id="@+id/home_divider_first"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/home_button_client"
+                    android:layout_marginStart="@dimen/home_divider_marginside"
+                    android:layout_marginTop="@dimen/home_divider_margintop"
+                    android:layout_marginEnd="@dimen/home_divider_marginside">
+                    <View
+                        android:id="@+id/home_divider_first_0"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/divider_height"
+                        android:background="@color/strongblue"
+                        android:visibility="visible" />
+                    <View
+                        android:id="@+id/home_divider_first_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/divider_height"
+                        android:background="@color/purple"
+                        android:visibility="visible" />
+
+                </View>
+
+    -->
 
 </RelativeLayout>

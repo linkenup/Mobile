@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.OpenContractActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/contract_title"
+                android:text="@string/app_name"
+                android:drawableStart="@drawable/ic_contract_48"
+                style="@style/Title" />
+
+            <TextView
+                android:id="@+id/contract_text_client"
+                style="@style/Field"/>
+
+            <TextView
+                android:id="@+id/contract_text_software"
+                style="@style/Field" />
+
+            <TextView
+                android:id="@+id/contract_text_director"
+                style="@style/Field"/>
+            
+            <TextView
+                android:id="@+id/contract_text_workerDirector"
+                style="@style/Field"/>
+
+            <TextView
+                android:id="@+id/contract_text_workerConsultant"
+                style="@style/Field"/>
+
+            <TextView
+                android:id="@+id/contract_text_consultantTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/field_text_marginHorizontal"
+                android:ems="10"
+                android:text="@string/cosultant_time"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/field_text_marginHorizontal"
+                android:layout_marginTop="@dimen/contract_spinner_marginTop"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/contract_text_days"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/contract_consultantTime_marginEnd"
+                    android:text="@string/daysPweek" />
+
+                <TextView
+                    android:id="@+id/contract_text_hours"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hoursPday" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/field_text_marginHorizontal"
+                android:layout_marginTop="@dimen/contract_spinner_marginTop"
+                android:layout_marginBottom="@dimen/insert_edit_marginVertical"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/contract_text_beginHour"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_marginEnd="@dimen/contract_consultantTime_marginEnd"
+                    android:text="@string/begin"/>
+
+                <TextView
+                    android:id="@+id/contract_text_endHour"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="@string/end"/>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/contract_text_monthValue"
+                style="@style/Field"/>
+
+            <TextView
+                android:id="@+id/contract_text_bank"
+                style="@style/Field"/>
+
+            <TextView
+                android:id="@+id/contract_text_agency"
+                style="@style/Field"/>
+
+            <TextView
+                android:id="@+id/contract_text_account"
+                style="@style/Field"/>
+
+            <Button
+                android:id="@+id/opencontract_send_button"
+                android:onClick="onSend"
+                android:text="@string/send"
+                android:theme="@style/Theme.LinkenUp.Button"
+                style="@style/Button"/>
+            <Button
+                android:id="@+id/opencontract_button_change"
+                android:onClick="onUpdate"
+                android:text="@string/change"
+                android:theme="@style/Theme.LinkenUp.Button"
+                style="@style/Button"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

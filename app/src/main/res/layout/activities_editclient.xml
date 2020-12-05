@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView"
+        android:text="@string/newclient"
+        android:drawableStart="@drawable/ic_client_48"
+        style="@style/Title"/>
+
+    <EditText
+        android:id="@+id/newclient_edit_name"
+        android:inputType="text"
+        android:hint="@string/name"
+        style="@style/Field.Edit"/>
+
+    <EditText
+        android:id="@+id/newclient_edit_cnpj"
+        android:hint="@string/cnpj"
+        android:inputType="number|text"
+        style="@style/Field.Edit"/>
+
+    <EditText
+        android:id="@+id/newclient_edit_ce"
+        android:hint="@string/ce"
+        android:inputType="number|text"
+        style="@style/Field.Edit"/>
+
+    <EditText
+        android:id="@+id/newclient_edit_address"
+        android:inputType="text"
+        android:hint="@string/address"
+        style="@style/Field.Edit"/>
+    <Button
+        android:id="@+id/newclient_button_confirm"
+        android:text="@string/register"
+        android:onClick="onRegister"
+        android:theme="@style/Theme.LinkenUp.Button"
+        style="@style/Button"/>
+</LinearLayout>

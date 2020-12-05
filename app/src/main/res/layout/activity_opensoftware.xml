@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.OpenSoftwareActivity">
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/newsoftware_tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/newsoftware_tabitem_software"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/software" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/newsoftware_tabitem_screen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/screens" />
+    </com.google.android.material.tabs.TabLayout>
+
+    <TextView
+        android:id="@+id/opensoftware_text_name"
+        android:drawableStart="@drawable/ic_software_48"
+        style="@style/Title"/>
+
+    <TextView
+        android:id="@+id/opensoftware_text_id"
+        android:textSize="@dimen/subtitle_textSize"
+        style="@style/Field"/>
+
+    <TextView
+        android:id="@+id/opensoftware_text_description"
+        android:maxLines="6"
+        style="@style/Field"/>
+
+    <TextView
+        android:id="@+id/opensoftware_text_supports"
+        android:maxLines="3"
+        style="@style/Field"
+        />
+
+
+    <TextView
+        android:id="@+id/opensoftware_text_screenCount"
+        style="@style/Field"
+        />
+
+
+    <Button
+        android:id="@+id/opensoftware_button_change"
+        android:text="@string/change"
+        android:onClick="onUpdate"
+        android:theme="@style/Theme.LinkenUp.Button"
+        style="@style/Button"/>
+
+    <Button
+        android:id="@+id/opensoftware_button_contracts"
+        android:text="@string/contracts"
+        android:onClick="onContracts"
+        android:theme="@style/Theme.LinkenUp.Button"
+        style="@style/Button"/>
+
+</LinearLayout>

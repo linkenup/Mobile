@@ -13,34 +13,39 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="@string/homelayout_title" />
+        android:text="@string/preference_homelayout_title" />
 
     <CheckBox
         android:id="@+id/preference_check_homelayout_img"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onHomeLayout"
-        android:text="@string/homelayout_img_option" />
+        android:text="@string/preference_homelayout_img_option" />
 
     <CheckBox
         android:id="@+id/preference_check_homelayout_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onHomeLayout"
-        android:text="@string/homelayout_btn_option" />
+        android:text="@string/preference_homelayout_btn_option" />
 
     <CheckBox
         android:id="@+id/preference_check_homelayout_smallimg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onHomeLayout"
-        android:text="@string/homelayout_smallimg_option" />
+        android:text="@string/preference_homelayout_smallimg_option" />
 
     <Switch
         android:id="@+id/preference_switch_theme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/theme_switch"
+        android:text="@string/theme"
         android:onClick="onTheme"/>
+
+    <Button
+        android:layout_width="@dimen/button_smallWidth"
+        android:layout_height="wrap_content"
+        android:onClick="onUpgradeSQLite" />
 
 </LinearLayout>

@@ -5,9 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ClientActivity"
     android:theme="@style/Theme.LinkenUp.SecondBackground"
-    >
+    tools:context=".ClientActivity">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/client_toolbar"
@@ -15,13 +14,34 @@
             android:layout_height="wrap_content"
             android:minHeight="?attr/actionBarSize"
             android:theme="@style/Theme.LinkenUp.ToolBar"
+            app:navigationIcon="@drawable/ic_arrow_back_24"
             app:title="@string/client"
             app:titleTextColor="?attr/colorOnPrimary" />
+
+
+
+        <include
+            android:id="@+id/client_search_include"
+            layout="@layout/include_search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/client_recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/client_floatbutton_new"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_marginTop="@dimen/floatbutton_marginTop"
+            android:layout_marginRight="@dimen/floatbutton_marginRight"
+            android:clickable="true"
+            android:onClick="onNew"
+            app:srcCompat="@drawable/ic_plus_24" />
+
 
 
 </LinearLayout>

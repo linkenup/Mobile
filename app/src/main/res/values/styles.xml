@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Title">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/title_textSize</item>
+        <item name="android:layout_marginTop">@dimen/title_marginTop</item>
+        <item name="android:layout_marginEnd">@dimen/title_margin</item>
+        <item name="android:layout_marginBottom">@dimen/title_margin</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="drawableTint">@color/strongblue</item>
+    </style>
+
+    <style name="Field">
+        <item name="android:textSize">@dimen/open_item_textSize</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/field_text_marginHorizontal</item>
+        <item name="android:layout_marginEnd">@dimen/field_text_marginHorizontal</item>
+        <item name="android:layout_marginTop">@dimen/insert_edit_marginVertical</item>
+        <item name="android:layout_marginBottom">@dimen/insert_edit_marginVertical</item>
+        <item name="android:textIsSelectable">true</item>
+    </style>
+
+    <style name="Button">
+        <item name="cornerRadius">@dimen/button_radius</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_width">@dimen/default_button_width</item>
+        <item name="android:layout_height">@dimen/button_height</item>
+        <item name="android:textSize">@dimen/button_textsize</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+
+
+    <style name="Field.Edit">
+        <item name="android:background">@drawable/shape_edit_text</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/field_text_marginHorizontal</item>
+        <item name="android:layout_marginEnd">@dimen/field_text_marginHorizontal</item>
+        <item name="android:layout_marginTop">@dimen/insert_edit_marginVertical</item>
+        <item name="android:layout_marginBottom">@dimen/insert_edit_marginVertical</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="FloatEdit">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">bottom|right</item>
+        <item name="android:layout_marginTop">@dimen/floatbutton_marginTop</item>
+        <item name="android:layout_marginRight">@dimen/floatbutton_fortext_marginRight</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+</resources>
