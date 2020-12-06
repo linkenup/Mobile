@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.linkenup">
+    package="com.example.linkenup" >
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:required="true" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -8,22 +15,54 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.LinkenUp">
-        <activity android:name=".MapActivity"></activity>
-        <activity android:name=".OpenClientActivity" />
+        android:theme="@style/Theme.LinkenUp" >
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="no_api_key"/>
+        <activity android:name=".activities.EditDirectorActivity" >
+        </activity>
+        <activity android:name=".activities.EditSoftwareActivity" />
+        <activity android:name=".activities.EditWorkerActivity" />
+        <activity android:name=".activities.EditScreenActivity" />
+        <activity android:name=".activities.EditClientActivity" />
+        <activity android:name=".activities.OpenContractActivity" />
+        <activity android:name=".activities.OpenDirectorActivity" />
+        <activity android:name=".DirectorActivity" />
+        <activity android:name=".activities.OpenWorkerActivity" />
+        <activity android:name=".activities.NewWorkerActivity" />
+        <activity android:name=".activities.OpenSoftwareActivity" />
+        <activity android:name=".ClientActivity" />
+        <activity android:name=".activities.OpenClientActivity" />
+        <activity android:name=".activities.NewClientActivity" />
+        <activity android:name=".WorkerActivity" />
+        <activity android:name=".ScreenActivity" />
+        <activity android:name=".activities.OpenScreenActivity" />
+        <activity android:name=".activities.NewScreenActivity" />
+        <activity android:name=".SoftwareActivity" />
+        <activity android:name=".activities.NewSoftwareActivity" />
+        <activity android:name=".activities.NewDirectorActivity" />
+        <activity android:name=".ContractActivity" />
+        <activity android:name=".activities.NewContractActivity" />
+        <activity android:name=".activities.EditContractActivity"/>
+        <activity android:name=".MapActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.APP_MAPS"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="geo"/>
+            </intent-filter>
+        </activity>
         <activity android:name=".PreferenceActivity" />
         <activity android:name=".HomeActivity" />
         <activity
             android:name=".SplashActivity"
             android:noHistory="true"
-            android:theme="@style/Theme.LinkenUp.SplashBoot">
+            android:theme="@style/Theme.LinkenUp.SplashBoot" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ClientActivity" />
     </application>
 
 </manifest>

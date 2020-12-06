@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/map_include_nav"
+    android:layout_marginVertical="@dimen/map_nav_marginVertical"
+        android:layout_gravity="end"
+        android:paddingVertical="@dimen/map_nav_paddingVertical"
+        android:paddingHorizontal="@dimen/map_nav_paddingHorizontal"
+        android:layout_width="@dimen/map_nav_width"
+        android:visibility="gone"
+        android:layout_height="match_parent"
+        android:background="@drawable/shape_map_nav"
+        android:orientation="vertical">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/map_include_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+</LinearLayout>

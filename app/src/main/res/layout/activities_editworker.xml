@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:orientation="vertical" android:layout_width="match_parent"
+android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/newworker_title"
+                android:text="@string/newworker"
+                android:drawableStart="@drawable/ic_worker_48"
+                android:drawableTint="@color/strongblue"
+                style="@style/Title"/>
+
+            <EditText
+                android:id="@+id/newworker_edit_name"
+                android:inputType="text"
+                android:hint="@string/name"
+                style="@style/Field.Edit"/>
+
+            <EditText
+                android:id="@+id/newworker_edit_rg"
+                android:hint="@string/rg"
+                android:inputType="number|text"
+                style="@style/Field.Edit"/>
+
+            <EditText
+                android:id="@+id/newworker_edit_cpf"
+                android:hint="@string/cpf"
+                android:inputType="number|text"
+                style="@style/Field.Edit"/>
+
+            <EditText
+                android:id="@+id/newworker_edit_ctps"
+                android:inputType="text"
+                android:hint="@string/ctps"
+                style="@style/Field.Edit"/>
+
+            <EditText
+                android:id="@+id/newworker_edit_profession"
+                android:inputType="text"
+                android:hint="@string/profession"
+                style="@style/Field.Edit"/>
+
+            <EditText
+                android:id="@+id/newworker_edit_nationality"
+                android:inputType="text"
+                android:hint="@string/nationality"
+                style="@style/Field.Edit"/>
+
+            <EditText
+                android:id="@+id/newworker_edit_address"
+                android:inputType="text"
+                android:hint="@string/address"
+                style="@style/Field.Edit"/>
+
+            <EditText
+                android:id="@+id/newworker_edit_civilstate"
+                android:inputType="text"
+                android:hint="@string/civilstate"
+                style="@style/Field.Edit"/>
+
+            <Button
+                android:id="@+id/newworker_button_confirm"
+                android:onClick="onRegister"
+                android:text="@string/register"
+                style="@style/Button"
+                android:theme="@style/Theme.LinkenUp.Button"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

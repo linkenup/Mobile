@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.NewDirectorActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            <TextView
+                android:drawableTint="@color/strongblue"
+                android:id="@+id/textView"
+                android:text="@string/newdirector"
+                android:drawableStart="@drawable/ic_director_48"
+                style="@style/Title"/>
+            <EditText
+                android:id="@+id/newdirector_edit_name"
+                android:inputType="text"
+                android:hint="@string/name"
+                style="@style/Field.Edit"/>
+
+            <EditText
+                android:id="@+id/newdirector_edit_rg"
+                android:hint="@string/rg"
+                android:inputType="number|text"
+                style="@style/Field.Edit"/>
+
+            <EditText
+                android:id="@+id/newdirector_edit_cpf"
+                android:hint="@string/cpf"
+                android:inputType="number|text"
+                style="@style/Field.Edit"/>
+
+            <EditText
+                android:id="@+id/newdirector_edit_profession"
+                android:inputType="text"
+                android:hint="@string/profession"
+                style="@style/Field.Edit"/>
+
+            <EditText
+                android:id="@+id/newdirector_edit_nationality"
+                android:inputType="text"
+                android:hint="@string/nationality"
+                style="@style/Field.Edit"/>
+
+            <EditText
+                android:id="@+id/newdirector_edit_address"
+                android:inputType="text"
+                android:hint="@string/address"
+                style="@style/Field.Edit"/>
+
+            <EditText
+                android:id="@+id/newdirector_edit_civilstate"
+                android:inputType="text"
+                android:hint="@string/civilstate"
+                style="@style/Field.Edit"/>
+
+            <Button
+                android:id="@+id/newdirector_button_confirm"
+                android:text="@string/register"
+                android:onClick="onRegister"
+                android:theme="@style/Theme.LinkenUp.Button"
+                style="@style/Button"/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

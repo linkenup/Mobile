@@ -10,19 +10,20 @@
         <item name="colorSecondaryVariant">@color/lowblue</item>
         <item name="colorOnSecondary">@color/white</item>
         <item name="colorSurface">@color/lightgray</item>
+        <item name="colorOnSurface">@color/gray2</item>
         <!-- Accent color. -->
         <item name="colorAccent">@color/purple</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-        <item name="buttonStyle">@style/Theme.LinkenUp.Button</item>
     </style>
     <style name="Theme.LinkenUp.ToolBar">
         <item name="android:background">?colorPrimary</item>
         <item name="titleTextColor">?colorOnPrimary</item>
     </style>
-    <style name="Theme.LinkenUp.Button" parent="@style/Widget.AppCompat.Button">
+    <style name="Theme.LinkenUp.Button" parent="Widget.AppCompat.Button">
         <item name="android:backgroundTint">?attr/colorSecondaryVariant</item>
+        <item name="background">@drawable/shape_divider</item>
         <item name="android:textColor">?colorOnSecondary</item>
     </style>
     <style name="Theme.LinkenUp.Splash" parent="Theme.MaterialComponents.DayNight.NoActionBar">
@@ -34,6 +35,6 @@
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
     </style>
     <style name="Theme.LinkenUp.SecondBackground" parent="Theme.LinkenUp">
-        <item name="android:windowBackground"></item>
+        <item name="android:windowBackground">@color/lightgray</item>
     </style>
 </resources>

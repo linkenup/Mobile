@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="night_button_verticalMargin">8dp</dimen>
+    <dimen name="smalltxt_size">58dp</dimen>
+    <dimen name="open_firstbutton_marginTop">5dp</dimen>
+</resources>

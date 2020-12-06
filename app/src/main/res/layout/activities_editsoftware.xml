@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.NewSoftwareActivity">
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/newsoftware_tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/newsoftware_tabitem_software"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/software" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/newsoftware_tabitem_screen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/screens" />
+    </com.google.android.material.tabs.TabLayout>
+
+    <TextView
+        android:id="@+id/newsoftware_title"
+        android:text="@string/newsoftware"
+        android:drawableStart="@drawable/ic_software_48"
+        android:drawableTint="@color/strongblue"
+        style="@style/Title"/>
+
+    <EditText
+        android:id="@+id/newsoftware_edit_name"
+        android:inputType="text"
+        android:hint="@string/name"
+        style="@style/Field.Edit"/>
+
+    <EditText
+        android:id="@+id/newsoftware_edit_description"
+        android:maxLines="5"
+        android:hint="@string/description"
+        android:inputType="textMultiLine|text"
+        style="@style/Field.Edit"/>
+
+    <EditText
+        android:id="@+id/newsoftware_edit_supports"
+        android:maxLines="2"
+        android:hint="@string/supports"
+        android:inputType="textMultiLine|text"
+        style="@style/Field.Edit"/>
+
+
+    <Button
+        android:id="@+id/newsoftware_button_confirm"
+        android:text="@string/register"
+        android:onClick="onRegister"
+        android:theme="@style/Theme.LinkenUp.Button"
+        style="@style/Button"/>
+
+</LinearLayout>

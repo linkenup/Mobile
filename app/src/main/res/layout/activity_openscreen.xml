@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.OpenScreenActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+    <TextView
+        android:id="@+id/openscreen_text_name"
+        android:drawableStart="@drawable/ic_screen_48"
+        style="@style/Title"/>
+
+    <TextView
+        android:id="@+id/openscreen_text_id"
+        android:textSize="@dimen/subtitle_textSize"
+        style="@style/Field"/>
+
+    <TextView
+        android:id="@+id/openscreen_text_software_name"
+        android:maxLines="6"
+        style="@style/Field"/>
+
+    <TextView
+        android:id="@+id/openscreen_text_functions"
+        android:maxLines="3"
+        style="@style/Field"
+        />
+
+    <Button
+        android:id="@+id/openscreen_button_change"
+        android:text="@string/change"
+        android:onClick="onUpdate"
+        android:theme="@style/Theme.LinkenUp.Button"
+        style="@style/Button"/>
+
+            <ImageView
+                android:id="@+id/openscreen_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

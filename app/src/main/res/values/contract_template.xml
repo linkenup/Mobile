@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+    %client.name
+    %client.address(city)
+    %client.address(street)
+    %client.address(number)
+    %client.address(neighborhood)
+    %client.address(cep)
+    %client.address(state)
+    %client.cnpj
+    %client.ce
+    
+    %director.name
+    %director.nationality
+    %director.civilState
+    %director.rg
+    %director.cpf
+    %director.profession
+    %director.address(street)
+    %director.address(number)
+    %director.address(neighborhood)
+    %director.address(cep)
+    %director.address(city)
+    %director.address(state)
+    
+    %us.name
+    %us.address(city)
+    %us.address(street)
+    %us.address(number)
+    %us.address(neighborhood)
+    %us.address(state)
+    %us.address(cep)
+    %us.cnpj
+    %us.ce
+    
+    %workerDirector.name
+    %workerDirector.nationality
+    %workerDirector.civilState
+    %workerDirector.profession
+    %workerDirector.rg
+    %workerDirector.cpf
+    %workerDirector.address(street)
+    %workerDirector.address(neighborhood)
+    %workerDirector.address(cep)
+    %workerDirector.address(city)
+    %workerDirector.address(state)
+    
+    %software.name
+    %software.supports
+
+    %screenList
+    
+    %workerConsultant.name
+    %workerConsultant.profession
+    %workerConsultant.rg
+    %workerConsultant.cpf
+    %workerConsultant.ctps
+    %workerConsultant.days
+    %workerConsultant.hours
+    %workerConsultant.beginHour
+    %workerConsultant.endHour
+    R$%contract.monthValue.00
+    %contract.account
+    %contract.bank
+    %contract.agency
+    -->
+    <string name="contract_template" >
+CONTRATO DE PRESTAÇÃO DE SERVIÇOS PARA SUPORTE DE SOFTWARE\n\n
+IDENTIFICAÇÃO DAS PARTES CONTRATANTES \n\n\n
+CONTRATANTE: %client.name, com sede em %client.address(city), na Rua %client.address(street), no %client.address(number),
+bairro %client.address(neighborhood), Cep %client.address(cep), no Estado %client.address(state),
+inscrita no C.N.P.J. sob o no %client.cnpj, e no Cadastro Estadual sob o no %client.ce,
+neste ato representada pelo seu diretor %director.name, %director.nationality, %director.civilState,
+%director.profession, Carteira de Identidade no %director.rg, C.P.F. no %director.cpf,
+residente e domiciliado na Rua %director.address(street), no %director.address(number),
+bairro %director.address(neighborhood), Cep %director.address(cep),
+Cidade %director.address(city), no Estado %director.address(state).\n\n
+CONTRATADA: %us.name, com sede em %us.address(city), na
+Rua %us.address(street), no %us.address(number), bairro %us.address(neighborhood), Cep %us.address(cep), no
+Estado %us.address(state), inscrita no C.N.P.J. sob o no %us.cnpj, e no Cadastro Estadual sob
+o no %us.ce, neste ato representada pelo seu diretor %workerDirector.name,
+%workerDirector.nationality, %workerDirector.civilState, %workerDirector.profession, Carteira de Identidade no
+%workerDirector.rg, C.P.F. no %workerDirector.cpf, residente e domiciliado na Rua
+%workerDirector.address(street), no %workerDirector.address(number), bairro %workerDirector.address(neighborhood),
+Cep %workerDirector.address(cep), Cidade %workerDirector.address(city), no Estado %workerDirector.address(state).\n\n
+As partes acima identificadas têm, entre si, justo e acertado o presente
+Contrato de Prestação de Serviço para Suporte de Software, que se regerá
+pelas cláusulas seguintes e pelas condições de pagamento descritas no presente.\n\n
+DO OBJETO DO CONTRATO\n\n\n
+Cláusula 1a. O presente instrumento tem como objeto a prestação de serviços
+de suporte em informática do Software %software.name.\n\n
+DO SUPORTE\n\n\n
+Cláusula 2a. O suporte do Software %software.name cobrirá eventuais necessidades
+por parte da CONTRATANTE na instalação de software, reinstalação,
+atualização, configuração, customização e ainda %software.supports.\n\n
+ • %software.name\n
+   Telas:\n
+%screensList\n\n\n
+DAS OBRIGAÇÕES DA CONTRATADA\n\n
+Cláusula 3a. Será disponibilizado para a prestação do suporte in loco o 
+funcionário da CONTRATADA: %workerConsultant.name, %workerConsultant.profession,
+Carteira de Identidade no %workerConsultant.rg, C.P.F. no %workerConsultant.cpf, 
+C.T.P.S. no %workerConsultant.ctps, que prestará o serviço %workerConsultant.days dias por semana, %workerConsultant.hours horas por dia, iniciando sua jornadas às %workerConsultant.beginHour horas e finalizando às %workerConsultant.endHour horas.\n\n
+DAS OBRIGAÇÕES DA CONTRATANTE\n\n\n
+Cláusula 4a. A CONTRATANTE compromete-se em manter à disposição da
+CONTRATADA todos os meios necessários para execução dos serviços, ou
+seja, livre acesso aos equipamentos, energia elétrica, iluminação, local
+adequado e ainda possuir equipamentos compatíveis para o correto
+funcionamento do Software %software.name.\n\n
+DO VALOR E FORMA DE PAGAMENTO\n\n\n
+Cláusula 5a. A CONTRATANTE pagará à CONTRATADA o valor mensal de R$%contract.monthValue.00 (.........) pelo serviço prestado, devendo o valor ser depositado
+em nome da CONTRATADA, no Banco %contract.bank, Agência %contract.agency, Conta
+Corrente no %contract.account Parágrafo único. A primeira mensalidade deverá ser paga no ato da assinatura deste contrato, e as demais a cada dia 5 de cada mês. Em caso de atraso, será 
+aplicado multa de 2% (dois por cento) acrescido de juros diários de 0,35%
+(zero vírgula trinta e cinco por cento) sobre o valor da mensalidade. Caso a
+correção monetária venha ser superior aos juros aqui especificados, esta
+substituirá os mesmos no cálculo do valor devido pela CONTRATANTE para a CONTRATADA.\n\n
+DO PRAZO\n\n\n
+Cláusula 6a. A execução plena da prestação de serviço se fará por um período
+de um ano (doze meses) contado a partir da data de assinatura deste contrato.
+Parágrafo Único. Na hipótese de renovação, o valor do pagamento será
+corrigido pela correção monetária apurada no último período anual de vigência
+deste instrumento, calculada com base na evolução do Índice Geral de Preços
+de Mercado (IGP-M), da Fundação Getúlio Vargas, ou em caso de este setornar inaplicável em virtude de disposição legal, será aplicado aquele que o
+estiver substituindo segundo regulamentação legal.\n\n
+DA RESCISÃO\n\n\n
+Cláusula 7a. O contrato poderá ser rescindido por ambas as partes, cabendo à
+parte que ocasionou o rompimento do mesmo, o pagamento de multa
+rescisória, fixada em uma mensalidade, à outra parte.\n\n
+DOS CASOS OMISSOS\n\n\n
+Cláusula 8a. Os casos omissos serão resolvidos de comum acordo, mediante
+reunião das partes para tal finalidade, devendo ser elaborado termo aditivo a
+este contrato e assinado pelas partes contratantes.\n\n
+DO FORO\n\n\n
+Cláusula 9a. Para dirimir quaisquer controvérsias oriundas do presente
+contrato, as partes elegem o foro da comarca de %client.address(city);
+Por estarem assim justos e contratados, firmam o presente instrumento, em
+duas vias de igual teor, juntamente com 2 (duas) testemunhas.\n\n
+\n\n\n\n
+Representante Legal da Contratante\n
+Nome: ..................................................... ; Assinatura: ................................................. ;\n\n
+
+Representante Legal da Contratada\n
+Nome: ..................................................... ; Assinatura: ................................................. ;\n\n
+
+Testemunha 1\n
+Nome: ............................................,......................... ; RG: ............................. ;\nAssinatura: ................................................. ;\n\n
+
+Testemunha 2\n
+Nome: ...................................................................... ; RG: ............................. ;\nAssinatura: ................................................. ;\n
+    </string>
+</resources>

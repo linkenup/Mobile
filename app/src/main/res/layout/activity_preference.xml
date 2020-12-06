@@ -8,39 +8,115 @@
     android:orientation="vertical"
     tools:context=".PreferenceActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/preference_toolbar"
+        android:layout_width="match_parent"
+        app:navigationIcon="@drawable/ic_arrow_back_24"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:theme="@style/Theme.LinkenUp.ToolBar"
+        app:title="@string/preferences"
+        app:titleTextColor="?attr/colorOnPrimary" />
+
     <TextView
+        android:textIsSelectable="false"
         android:id="@+id/preference_text_homelayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/homelayout_title" />
+        android:layout_marginStart="@dimen/subtitle_marginTop"
+        style="@style/Title"
+        android:text="@string/preference_homelayout_title" />
 
     <CheckBox
+        android:textIsSelectable="false"
         android:id="@+id/preference_check_homelayout_img"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:onClick="onHomeLayout"
-        android:text="@string/homelayout_img_option" />
+        style="@style/Field"
+        android:text="@string/preference_homelayout_img_option" />
 
     <CheckBox
+        android:textIsSelectable="false"
         android:id="@+id/preference_check_homelayout_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/Field"
         android:onClick="onHomeLayout"
-        android:text="@string/homelayout_btn_option" />
+        android:text="@string/preference_homelayout_btn_option" />
 
     <CheckBox
+        android:textIsSelectable="false"
         android:id="@+id/preference_check_homelayout_smallimg"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:onClick="onHomeLayout"
-        android:text="@string/homelayout_smallimg_option" />
+        style="@style/Field"
+        android:text="@string/preference_homelayout_smallimg_option" />
 
     <Switch
+        android:textIsSelectable="false"
         android:id="@+id/preference_switch_theme"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/theme_switch"
+        android:text="@string/theme"
+        android:layout_marginStart="@dimen/subtitle_marginTop"
+        android:layout_marginTop="@dimen/preference_preferences_marginTop"
+        android:textSize="@dimen/subtitle_textSize"
+        style="@style/Field"
         android:onClick="onTheme"/>
+
+    <Button
+        android:layout_marginTop="@dimen/preference_preferences_marginTop"
+        android:id="@+id/preference_button_about_us"
+        android:text="@string/about_us"
+        style="@style/Button"
+        android:theme="@style/Theme.LinkenUp.Button"/>
+
+    <Button
+        android:layout_marginTop="@dimen/preference_preferences_marginTop"
+        android:id="@+id/preference_button_map"
+        android:text="@string/map"
+        style="@style/Button"
+        android:theme="@style/Theme.LinkenUp.Button"/>
+
+    <Button
+        android:layout_width="@dimen/button_smallWidth"
+        android:layout_marginTop="@dimen/preference_preferences_marginTop"
+        style="@style/Button"
+        android:text="@string/erase_sqlite"
+        android:layout_height="wrap_content"
+        android:onClick="onUpgradeSQLite" />
+
+
+    <Switch
+        android:textIsSelectable="false"
+        android:id="@+id/preference_switch_imageBorder"
+        android:text="@string/imageBorder"
+        android:layout_marginStart="@dimen/subtitle_marginTop"
+        android:layout_marginTop="@dimen/preference_preferences_marginTop"
+        android:textSize="@dimen/subtitle_textSize"
+        style="@style/Field"
+        android:onClick="onImageBorder"/>
+
+    <LinearLayout
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <CheckBox
+            android:id="@+id/preference_check_imageBorder_red"
+            android:layout_width="@dimen/preference_check_imageBorder_width"
+            android:layout_margin="8dp"
+            android:layout_height="wrap_content"
+            android:onClick="onImageBorder"
+            android:text="@string/red" />
+
+        <CheckBox
+            android:id="@+id/preference_check_imageBorder_green"
+            android:layout_width="@dimen/preference_check_imageBorder_width"
+            android:layout_margin="8dp"
+            android:layout_height="wrap_content"
+            android:text="@string/green" />
+
+        <CheckBox
+            android:id="@+id/preference_check_imageBorder_blue"
+            android:layout_width="@dimen/preference_check_imageBorder_width"
+            android:layout_margin="8dp"
+            android:layout_height="wrap_content"
+            android:text="@string/blue" />
+
+    </LinearLayout>
 
 </LinearLayout>

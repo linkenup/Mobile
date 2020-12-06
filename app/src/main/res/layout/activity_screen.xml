@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/screen_tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/screen_tabitem_software"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onBack"
+            android:text="@string/software" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/screen_tabitem_screen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/screens" />
+    </com.google.android.material.tabs.TabLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/screen_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/screen_floatbutton_new"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginTop="@dimen/floatbutton_marginTop"
+        android:layout_marginEnd="@dimen/floatbutton_marginRight"
+        android:onClick="onNew"
+        android:clickable="true"
+        app:srcCompat="@drawable/ic_plus_24" />
+
+</LinearLayout>

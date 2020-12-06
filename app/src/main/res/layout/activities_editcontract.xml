@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+            android:id="@+id/textView"
+            android:text="@string/newcontract"
+            android:drawableStart="@drawable/ic_contract_48"
+            style="@style/Title"/>
+    <EditText
+        android:id="@+id/newcontract_edit_client"
+        android:inputType="text"
+        android:hint="@string/client"
+        style="@style/Field.Edit" />
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/newcontract_floatbutton_client"
+                app:srcCompat="@drawable/ic_client_48"
+                style="@style/FloatEdit"/>
+
+    <EditText
+        android:id="@+id/newcontract_edit_software"
+        android:hint="@string/software"
+        style="@style/Field.Edit"
+        />
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/newcontract_floatbutton_software"
+                app:srcCompat="@drawable/ic_software_48"
+                style="@style/FloatEdit"/>
+
+            <EditText
+                android:id="@+id/newcontract_edit_director"
+                android:hint="@string/director"
+                style="@style/Field.Edit"/>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/newcontract_floatbutton_director"
+                app:srcCompat="@drawable/ic_director_48"
+                style="@style/FloatEdit"/>
+
+            <EditText
+                android:id="@+id/newcontract_edit_workerDirector"
+                android:inputType="text"
+                style="@style/Field.Edit"
+                android:hint="@string/workerdirector" />
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/newcontract_floatbutton_workerDirector"
+                app:srcCompat="@drawable/ic_worker_48"
+                style="@style/FloatEdit"/>
+
+
+            <EditText
+        android:id="@+id/newcontract_edit_workerConsultant"
+        android:inputType="text"
+        android:hint="@string/consultant"
+                style="@style/Field.Edit"/>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/newcontract_floatbutton_workerConsultant"
+                app:srcCompat="@drawable/ic_worker_48"
+                style="@style/FloatEdit"/>
+
+
+            <TextView
+                android:id="@+id/newcontract_text_consultantTime"
+                android:ems="10"
+                android:textSize="@dimen/subtitle_textSize"
+                android:layout_marginHorizontal="@dimen/field_text_marginHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Agendamento do consultor:" />
+
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/contract_spinner_marginTop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/field_text_marginHorizontal">
+
+                <TextView
+                    android:id="@+id/newcontract_text_days"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dias/Semana:" />
+
+                <Spinner
+                    android:id="@+id/newcontract_spinner_days"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/newcontract_text_hours"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Horas/Dia:" />
+
+                <Spinner
+                    android:id="@+id/newcontract_spinner_hours"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/contract_spinner_marginTop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/field_text_marginHorizontal">
+
+                <TextView
+                    android:id="@+id/newcontract_text_beginHour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Inicio:" />
+
+                <Spinner
+                    android:id="@+id/newcontract_spinner_beginHour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/newcontract_text_endHour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fim:"/>
+                <Spinner
+                    android:id="@+id/newcontract_spinner_endHour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+
+            <EditText
+                android:id="@+id/newcontract_edit_monthValue"
+                android:hint="@string/monthValue"
+                android:inputType="number"
+                style="@style/Field.Edit"/>
+            <EditText
+                android:id="@+id/newcontract_edit_bank"
+                android:inputType="text"
+                android:hint="@string/bank"
+                style="@style/Field.Edit"/>
+            <EditText
+                android:id="@+id/newcontract_edit_agency"
+                android:inputType="text"
+                android:hint="@string/agency"
+                style="@style/Field.Edit"/>
+            <EditText
+                android:id="@+id/newcontract_edit_account"
+                android:inputType="text"
+                android:hint="@string/account"
+                style="@style/Field.Edit"/>
+
+            <Button
+                android:id="@+id/newclient_button_confirm"
+                android:text="@string/register"
+                android:onClick="onRegister"
+                android:theme="@style/Theme.LinkenUp.Button"
+                style="@style/Button"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
