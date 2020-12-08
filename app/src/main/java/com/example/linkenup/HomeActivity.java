@@ -294,6 +294,10 @@ public class HomeActivity extends AppCompatActivity {
         intent.putExtra(DirectorActivity.EXTRA_CLIENT_ID,DirectorActivity.NO_CLIENT_ID);
         startActivity(intent);
     }
+
+    public void onMap(View view){
+        startActivity(new Intent(this,MapActivity.class));
+    }
 }
 
 

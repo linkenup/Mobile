@@ -127,5 +127,6 @@
 
         </LinearLayout>
     </ScrollView>
-
+    <include
+        layout="@layout/include_home_floatbutton"/>
 </LinearLayout>

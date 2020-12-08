@@ -1,13 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MapActivity">
+    tools:context=".MapActivity"
+    android:id="@+id/map_layout">
 
     <com.google.android.gms.maps.MapView
         android:id="@+id/mapView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-</RelativeLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_menu_48"
+        android:onClick="changeNav"
+        android:tint="@color/black"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="@dimen/floatbutton_marginRight"/>
+
+    <FrameLayout
+        android:id="@+id/map_secondLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include
+        android:id="@+id/map_include"
+        layout="@layout/scene_map_nav_hide" />
+    </FrameLayout>
+    <ImageView
+        android:layout_width="@dimen/map_logo_size"
+        android:layout_height="@dimen/map_logo_size"
+        android:layout_marginBottom="@dimen/map_logo_marginBottom"
+        android:layout_gravity="bottom"
+        android:src="@drawable/logo_black"/>
+</FrameLayout>

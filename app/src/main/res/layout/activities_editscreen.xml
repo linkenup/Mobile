@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/newscreen_title"
         android:text="@string/newscreen"
         android:drawableStart="@drawable/ic_screen_48"
         style="@style/Title"/>

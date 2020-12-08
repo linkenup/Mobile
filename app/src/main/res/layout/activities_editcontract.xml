@@ -16,7 +16,7 @@
             android:orientation="vertical" >
 
             <TextView
-            android:id="@+id/textView"
+            android:id="@+id/newcontract_title"
             android:text="@string/newcontract"
             android:drawableStart="@drawable/ic_contract_48"
             style="@style/Title"/>
@@ -82,18 +82,20 @@
                 android:layout_height="wrap_content"
                 android:text="Agendamento do consultor:" />
 
-            <LinearLayout
+            <GridLayout
+                android:columnCount="2"
+                android:layout_marginHorizontal="@dimen/field_text_marginHorizontal"
                 android:gravity="center_vertical"
                 android:layout_marginTop="@dimen/contract_spinner_marginTop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/field_text_marginHorizontal">
+                >
 
                 <TextView
                     android:id="@+id/newcontract_text_days"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Dias/Semana:" />
+                    android:text="@string/daysPweek" />
 
                 <Spinner
                     android:id="@+id/newcontract_spinner_days"
@@ -101,16 +103,18 @@
                     android:layout_height="wrap_content"/>
 
                 <TextView
+                    android:layout_marginTop="@dimen/contract_spinner_marginTop"
                     android:id="@+id/newcontract_text_hours"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Horas/Dia:" />
+                    android:text="@string/hoursPday" />
 
                 <Spinner
+                    android:layout_marginTop="@dimen/contract_spinner_marginTop"
                     android:id="@+id/newcontract_spinner_hours"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
-            </LinearLayout>
+            </GridLayout>
             <LinearLayout
                 android:gravity="center_vertical"
                 android:layout_marginTop="@dimen/contract_spinner_marginTop"

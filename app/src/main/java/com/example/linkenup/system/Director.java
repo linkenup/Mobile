@@ -14,15 +14,15 @@ public class Director implements Serializable {
             NATIONALITY = "nationality",
             CIVIL_STATE = "civilState";
 
-    public Integer id;
-    public String name;
-    public Integer fkClient;
-    public String rg;
-    public String cpf;
-    public String profession;
-    public String nationality;
-    public String address;
-    public String civilState;
+    public Integer  id;
+    public String   name;
+    public Integer  fkClient;
+    public String   rg;
+    public String   cpf;
+    public String   profession;
+    public String   nationality;
+    public String   address;
+    public String   civilState;
 
     public Director(){}
 

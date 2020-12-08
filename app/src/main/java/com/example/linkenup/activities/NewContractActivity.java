@@ -31,6 +31,8 @@ import com.example.linkenup.system.Worker;
 
 public class NewContractActivity extends AppCompatActivity {
 
+    public static boolean REGISTERING = false;
+
     private static final int
                             REQUEST_CLIENT = 6,
                             REQUEST_SOFTWARE = 7,
@@ -55,6 +57,8 @@ public class NewContractActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activities_editcontract);
+
+        REGISTERING = true;
 
         db = new DatabaseHelper(this);
 
@@ -284,6 +288,7 @@ public class NewContractActivity extends AppCompatActivity {
                 contract.endHour
         );
 
+
         int id = db.insertContract(contractResult);
         Toast.makeText(this,
                 getString(R.string.contract_insert_message)
@@ -291,6 +296,8 @@ public class NewContractActivity extends AppCompatActivity {
                         .replace("%client",client.name)
                         .replace("%software",software.name),
                 Toast.LENGTH_LONG).show();
+
+        REGISTERING = false;
 
         new Handler().postDelayed(() -> {
             startActivity(new Intent(getApplicationContext(), HomeActivity.class));
@@ -496,5 +503,11 @@ public class NewContractActivity extends AppCompatActivity {
             }
             Toast.makeText(this,R.string.invalid_id_message,Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        REGISTERING = false;
     }
 }

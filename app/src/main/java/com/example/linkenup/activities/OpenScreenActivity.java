@@ -3,11 +3,14 @@ package com.example.linkenup.activities;
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +22,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.linkenup.HomeActivity;
+import com.example.linkenup.PreferenceActivity;
 import com.example.linkenup.R;
 import com.example.linkenup.ScreenActivity;
 import com.example.linkenup.code.DatabaseHelper;
@@ -29,6 +34,8 @@ public class OpenScreenActivity extends AppCompatActivity {
                                 EXTRA_SCREEN_ID = "LinkenUp.OpenScreen.EXTRA_SCREEN_ID",
                                 EXTRA_SCREEN_NOT_INSERTED = "LinkenUp.OpenScreen.EXTRA_SCREEN_NOT_INSERTED",
                                 EXTRA_SCREEN_POSITION = "LinkenUp.OpenScreen.EXTRA_SCREEN_POSITION";
+    public static final String IMAGE_BORDER_PREFERENCE = "LinkenUp.OpenScreen.IMAGE_BORDER_PREFERENCE";
+    public static boolean CHANGED;
     Screen screen;
     ImageView imageView;
     TextView
@@ -39,10 +46,13 @@ public class OpenScreenActivity extends AppCompatActivity {
     View changeButton;
     int mode,screenPosition;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_openscreen);
+
+        CHANGED = false;
 
         Bundle extras = getIntent().getExtras();
         if(extras==null){
@@ -74,6 +84,18 @@ public class OpenScreenActivity extends AppCompatActivity {
         functionsText = (TextView) findViewById(R.id.openscreen_text_functions);
         softwareNameText = (TextView) findViewById(R.id.openscreen_text_software_name);
         changeButton = findViewById(R.id.openscreen_button_change);
+
+        SharedPreferences imageBorder = getSharedPreferences(OpenScreenActivity.IMAGE_BORDER_PREFERENCE,0);
+
+        boolean isColor =  imageBorder.getBoolean("bool",false);
+        int color = imageBorder.getInt("color", Color.rgb(0,0,166));
+
+        if(isColor){
+            float padding = getResources().getDimension(R.dimen.screen_imageBorder_size);
+            imageView.setPadding((int)padding,(int)padding,(int)padding,(int)padding);
+            imageView.setBackgroundColor(color);
+        }
+
 
         DatabaseHelper db = new DatabaseHelper(this);
         if(mode == ScreenActivity.OLDSOFTWARE_MODE) {
@@ -117,8 +139,12 @@ public class OpenScreenActivity extends AppCompatActivity {
             if(mode == ScreenActivity.OLDSOFTWARE_MODE)if(db.countScreen(screen.fkSoftware)>1) {
                 DialogInterface.OnClickListener listener = (DialogInterface dialog, int which) -> {
                     if (which == DialogInterface.BUTTON_POSITIVE) {
-                        if (db.removeScreen(screen.id))
+                        if (db.removeScreen(screen.id)){
                             Toast.makeText(this, R.string.remove_success_message, Toast.LENGTH_SHORT).show();
+                            new Handler().postDelayed(()->{
+                                startActivity(new Intent(this,HomeActivity.class));
+                            },1000);
+                        }
                         else
                             Toast.makeText(this, R.string.remove_failed_message, Toast.LENGTH_SHORT).show();
                     }
@@ -152,6 +178,16 @@ public class OpenScreenActivity extends AppCompatActivity {
             }
             return false;
         });
+
+        if(mode!=ScreenActivity.NEWSOFTWARE_MODE&&!NewContractActivity.REGISTERING){
+            findViewById(R.id.float_home_button).setVisibility(
+                    getSharedPreferences(PreferenceActivity.FLOAT_HOME,0).getBoolean("bool",false)?
+                            View.VISIBLE:
+                            View.GONE);
+        }
+        if(NewContractActivity.REGISTERING){
+            changeButton.setVisibility(View.GONE);
+        }
     }
 
     public void onUpdate(View view){
@@ -169,7 +205,11 @@ public class OpenScreenActivity extends AppCompatActivity {
         }
     }
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(CHANGED)onBackPressed();
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -178,5 +218,9 @@ public class OpenScreenActivity extends AppCompatActivity {
             if(grantResults[0]==PackageManager.PERMISSION_GRANTED)
                 imageView.setImageURI(Uri.parse(screen.uri));
         }
+    }
+
+    public void onHome(View view){
+        startActivity(new Intent(this, HomeActivity.class));
     }
 }

@@ -18,8 +18,6 @@ import com.example.linkenup.code.ClientAdapter;
 import com.example.linkenup.code.DatabaseHelper;
 import com.example.linkenup.system.Client;
 
-import java.io.StringReader;
-
 public class ClientActivity extends AppCompatActivity {
 
     DatabaseHelper db;
@@ -73,6 +71,11 @@ public class ClientActivity extends AppCompatActivity {
         {
             Toast.makeText(this,getString(R.string.no_clientfound_message),Toast.LENGTH_SHORT).show();
         }
+
+        if(!resulting)findViewById(R.id.float_home_button).setVisibility(
+                getSharedPreferences(PreferenceActivity.FLOAT_HOME,0).getBoolean("bool",false)?
+                        View.VISIBLE:
+                        View.GONE);
     }
 
     public void onNew(View view) {
@@ -96,9 +99,11 @@ public class ClientActivity extends AppCompatActivity {
     }
 
     public void onSearch(View view) {
+
         String stg = ((EditText)((ViewGroup)findViewById(R.id.client_search_include)).getChildAt(0)).getText().toString();
         String row = null;
         stg = stg.replace(" ","%");
+
 
         if(stg.contains(Client.NAME)){
             stg = stg.replace(Client.NAME,"");
@@ -127,5 +132,9 @@ public class ClientActivity extends AppCompatActivity {
             ((ClientAdapter)recyclerView.getAdapter()).clientList = db.findClient(stg,row);
             ((ClientAdapter)recyclerView.getAdapter()).notifyDataSetChanged();
         }
+    }
+
+    public void onHome(View view){
+        startActivity(new Intent(this, HomeActivity.class));
     }
 }

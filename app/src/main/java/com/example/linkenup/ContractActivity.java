@@ -13,10 +13,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.linkenup.activities.NewContractActivity;
-import com.example.linkenup.code.ClientAdapter;
 import com.example.linkenup.code.ContractAdapter;
 import com.example.linkenup.code.DatabaseHelper;
-import com.example.linkenup.system.Client;
 import com.example.linkenup.system.Contract;
 
 public class ContractActivity extends AppCompatActivity {
@@ -28,6 +26,7 @@ public class ContractActivity extends AppCompatActivity {
     DatabaseHelper db;
     Toolbar toolbar;
     RecyclerView recyclerView;
+    View addButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +35,8 @@ public class ContractActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.contract_toolbar);
         recyclerView = (RecyclerView) findViewById(R.id.contract_recycler);
+        addButton = findViewById(R.id.contract_floatbutton_new);
+
 
         Bundle extras = getIntent().getExtras();
 
@@ -75,6 +76,13 @@ public class ContractActivity extends AppCompatActivity {
                 recyclerView.setLayoutManager(layoutManager);
             }
 
+        findViewById(R.id.float_home_button).setVisibility(
+                getSharedPreferences(PreferenceActivity.FLOAT_HOME,0).getBoolean("bool",false)?
+                        View.VISIBLE:
+                        View.GONE);
+        if(NewContractActivity.REGISTERING){
+            addButton.setVisibility(View.GONE);
+        }
     }
 
     public void onNew(View view) {
@@ -146,5 +154,9 @@ public class ContractActivity extends AppCompatActivity {
             ((ContractAdapter)recyclerView.getAdapter()).contractList = db.findContract(stg,row);
             ((ContractAdapter)recyclerView.getAdapter()).notifyDataSetChanged();
         }
+    }
+
+    public void onHome(View view){
+        startActivity(new Intent(this, HomeActivity.class));
     }
 }

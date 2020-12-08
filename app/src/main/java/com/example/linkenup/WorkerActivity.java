@@ -14,10 +14,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.linkenup.activities.NewWorkerActivity;
-import com.example.linkenup.code.ClientAdapter;
 import com.example.linkenup.code.DatabaseHelper;
 import com.example.linkenup.code.WorkerAdapter;
-import com.example.linkenup.system.Client;
 import com.example.linkenup.system.Worker;
 
 public class WorkerActivity extends AppCompatActivity {
@@ -71,6 +69,10 @@ public class WorkerActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(this, getString(R.string.no_workerfound_message), Toast.LENGTH_SHORT).show();
             }
+        if(!resulting)findViewById(R.id.float_home_button).setVisibility(
+                getSharedPreferences(PreferenceActivity.FLOAT_HOME,0).getBoolean("bool",false)?
+                        View.VISIBLE:
+                        View.GONE);
 
     }
 
@@ -143,5 +145,9 @@ public class WorkerActivity extends AppCompatActivity {
             ((WorkerAdapter)recyclerView.getAdapter()).workerList = db.findWorker(stg,row);
             ((WorkerAdapter)recyclerView.getAdapter()).notifyDataSetChanged();
         }
+    }
+
+    public void onHome(View view){
+        startActivity(new Intent(this, HomeActivity.class));
     }
 }

@@ -1,0 +1,195 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <!--<string formatted="false" name='query_insertOLD'>
+        insert into Worker(
+                id
+                name,
+                rg,
+                cpf,
+                ctps,
+                profession,
+                nationality,
+                address,
+                civilState
+             ) values
+        (1,
+        'Bruno Marciano',
+        '59.183.341-93',
+        '678.923.123-4',
+        '091232 88234-SP',
+        'Analista',
+        'Brasileiro',
+        '02961-210',
+        'Solteiro'
+        ),
+
+        (2,
+        'Renan Damprelli',
+        '53.284.123-93',
+        '123.421.173-1',
+        '094521 34133-SP',
+        'Designer',
+        'Brasileiro',
+        'Rua Tarcon, 81 Perus bro',
+        'Solteiro'
+        );
+    </string>
+    <string name='teste'>
+        insert into client(id,name,cnpj,ce,address) values 
+        (1,
+        'teste-me-exclue',
+        '99.999.999/9999-99',
+        '99.999999-9',
+        '05125-040'
+        ),
+        
+        (2,
+        'Goal',
+        '33.425.291/9891-72',
+        '51.667721-9',
+        'Villa Lobbos São Paulo'
+        ),
+        
+        (3,
+        'Cherry Bomb',
+        '51.222.931/9090-22',
+        '51.667721-9',
+        'Parque São Domingos São Paulo'
+        );
+        
+        insert into software (id,name,description,supports) values 
+        (1,
+        'Site Esportivo',
+        'Site onepage responsivo com tema esportivo',
+        NULL
+        ),
+        (2,
+        'Transporte C#local',
+        'Sistema C# de gerenciamento de empresas de transportes',
+        NULL
+        );
+
+        insert into screen (id,softwareID,name,functions,uri) values
+        (1,
+        1,
+        'Principal',
+        'Site onepage',
+        NULL
+        ),
+
+        (2,
+        2,
+        'Home',
+        'Navegação',
+        NULL
+        );
+        
+        
+        
+        insert into director (
+        id,
+        fkClient,
+        name,
+        rg,
+        cpf,
+        profession,
+        address,
+        nationality,
+        civilState)
+        values
+        
+        (1,1, 
+        'TESTE',
+        '99.999.999-99',
+        '999.999.999-9',
+        'Testador',
+        '88888-888',
+        'Brasileiro',
+        'Viuvo'),
+        
+        (2,2,
+        'Roberto Silva',
+        '93.123.453.22',
+        '514.291.330-3',
+        'Gerente de estabelecimento comercial',
+        '90912-123',
+        'Brasileiro',
+        'Viuvo'
+        ),
+
+        (3,3,
+        'Ronaldo Antonino',
+        '94.213.522.33',
+        '313.124.356-4',
+        'Gerente de empresa de transportes',
+        '29019-321',
+        'Brasileiro',
+        'Viuvo'
+        );
+
+        insert into contract (
+            id,
+            fkClient,
+            fkSoftware,
+            fkWorkerDirector,
+            fkWorkerConsultant,
+            fkDirector,
+            monthValue,
+            bank,
+            agency,
+            account,
+            daysConsultant,
+            hoursConsultant,
+            beginHour,
+            endHour)
+        values
+        (1
+        2,
+        1,
+        2,
+        2,
+        2,
+        55,
+        'Banco Brasil',
+        'AgenciaNacional',
+        '00123',
+        4,
+        8,
+        6,
+        18
+        ),
+
+        (2
+        3,
+        2,
+        1,
+        2,
+        3,
+        105,
+        'Italu',
+        'NoNationalAgency',
+        '99321',
+        2,
+        6,
+        7,
+        17
+        ),
+
+        (3
+        1,
+        2,
+        2,
+        1,
+        1,
+        80,
+        'Banco Nacional',
+        'Agenciadorasil',
+        '022031',
+        4,
+        12,
+        9,
+        20
+        );
+
+    </string>-->
+</resources>

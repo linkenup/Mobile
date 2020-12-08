@@ -67,5 +67,6 @@
         android:onClick="onContracts"
         android:theme="@style/Theme.LinkenUp.Button"
         style="@style/Button"/>
-
+    <include
+        layout="@layout/include_home_floatbutton"/>
 </LinearLayout>

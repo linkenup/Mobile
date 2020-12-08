@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:theme="@style/Theme.LinkenUp.SecondBackground"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context=".SoftwareActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -34,11 +35,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
+        android:backgroundTint="@color/highblue"
         android:layout_marginTop="@dimen/floatbutton_marginTop"
         android:layout_marginRight="@dimen/floatbutton_marginRight"
         android:clickable="true"
         android:onClick="onNew"
         app:srcCompat="@drawable/ic_plus_24" />
 
+    <include
+        layout="@layout/include_home_floatbutton"/>
 
 </LinearLayout>

@@ -35,10 +35,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
+        android:backgroundTint="@color/highblue"
         android:layout_marginTop="@dimen/floatbutton_marginTop"
         android:layout_marginEnd="@dimen/floatbutton_marginRight"
         android:onClick="onNew"
         android:clickable="true"
         app:srcCompat="@drawable/ic_plus_24" />
+
+    <include
+        layout="@layout/include_home_floatbutton"/>
 
 </LinearLayout>

@@ -1,11 +1,14 @@
 package com.example.linkenup.activities;
 
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.linkenup.HomeActivity;
 import com.example.linkenup.R;
 import com.example.linkenup.code.DatabaseHelper;
+import com.example.linkenup.code.TextMask;
 import com.example.linkenup.system.Worker;
 
 public class EditWorkerActivity extends AppCompatActivity {
@@ -35,10 +39,15 @@ public class EditWorkerActivity extends AppCompatActivity {
 
     boolean backSafe;
 
+    DatabaseHelper db;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activities_editworker);
+
+        ((TextView)findViewById(R.id.newworker_title)).setText(R.string.edit_worker);
+
 
 
         Bundle extras = getIntent().getExtras();
@@ -48,7 +57,8 @@ public class EditWorkerActivity extends AppCompatActivity {
             onBackPressed();
             return;
         }
-        DatabaseHelper db = new DatabaseHelper(this);
+
+        db = new DatabaseHelper(this);
 
         worker = db.getWorker(extras.getInt(EXTRA_WORKER_ID));
 
@@ -70,35 +80,14 @@ public class EditWorkerActivity extends AppCompatActivity {
         addressEdit.setText(worker.address);
         nationalityEdit.setText(worker.nationality);
         civilStateEdit.setText(worker.civilState);
+
+        rgEdit.addTextChangedListener(TextMask.watch(rgEdit,TextMask.FORMAT_RG));
+        cpfEdit.addTextChangedListener(TextMask.watch(cpfEdit,TextMask.FORMAT_CPF));
+        ctpsEdit.addTextChangedListener(TextMask.watch(ctpsEdit,TextMask.FORMAT_CTPS));
     }
 
     public void onRegister(View view){
-
-        String
-                name = nameEdit.getText().toString(),
-                rg = rgEdit.getText().toString(),
-                cpf = cpfEdit.getText().toString(),
-                ctps = ctpsEdit.getText().toString(),
-                profession = professionEdit.getText().toString(),
-                nationality = nationalityEdit.getText().toString(),
-                address = addressEdit.getText().toString(),
-                civilState = civilStateEdit.getText().toString();
-
-        /*if(name.length() < 2 || cnpj.length()!=14)
-        {
-            return;
-        }*/
-
-        DatabaseHelper db = new DatabaseHelper(this);
-
-        if(db.findWorker(cpf,Worker.CPF)!=null)
-        {
-            Toast.makeText(this,getString(R.string.insert_cpf_notunique_message),Toast.LENGTH_LONG).show();
-            return;
-        }
-
-        worker = new Worker(worker.id,name,rg,cpf,ctps,profession,nationality,address,civilState);
-
+        if(!validate())return;
         int id = db.updateWorker(worker);
         Toast.makeText(this,
                 getString(R.string.worker_insert_message)
@@ -146,5 +135,48 @@ public class EditWorkerActivity extends AppCompatActivity {
             new Handler().postDelayed(() -> {backSafe=false;},5000);
         }
         else super.onBackPressed();
+    }
+
+    public boolean validate(){
+        String
+                name = nameEdit.getText().toString(),
+                rg = rgEdit.getText().toString(),
+                cpf = cpfEdit.getText().toString(),
+                ctps = ctpsEdit.getText().toString(),
+                profession = professionEdit.getText().toString(),
+                nationality = nationalityEdit.getText().toString(),
+                address = addressEdit.getText().toString(),
+                civilState = civilStateEdit.getText().toString();
+
+        if(name.length() < 2 || rg.length()!= TextMask.FORMAT_RG.length()||cpf.length()!=TextMask.FORMAT_CPF.length()||ctps!=TextMask.FORMAT_CTPS)
+        {
+            Toast.makeText(this,R.string.insert_all_message,Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if(db.findWorker(cpf,Worker.CPF)!=null&&cpf!=worker.cpf)
+        {
+            Toast.makeText(this,getString(R.string.insert_cpf_notunique_message),Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        Address realAddress;
+        try {
+            realAddress = new Geocoder(this).getFromLocationName(address,1).get(0);
+            if(address==null)throw new Exception();
+            else if(realAddress.getPostalCode()==null)throw new Exception();
+        }
+        catch (Exception e) {
+            Toast.makeText(this,R.string.invalid_workeraddress_message, Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        worker = new Worker(worker.id,name,rg,cpf,ctps,profession,nationality,address,civilState);
+
+        return  true;
+    }
+
+    public void onHome(View view){
+        startActivity(new Intent(this, HomeActivity.class));
     }
 }

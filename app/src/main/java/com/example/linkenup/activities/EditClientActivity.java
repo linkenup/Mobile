@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.linkenup.HomeActivity;
 import com.example.linkenup.R;
 import com.example.linkenup.code.DatabaseHelper;
+import com.example.linkenup.code.TextMask;
 import com.example.linkenup.system.Client;
 
 public class EditClientActivity extends AppCompatActivity {
@@ -31,6 +33,8 @@ public class EditClientActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activities_editclient);
+
+        ((TextView)findViewById(R.id.newclient_title)).setText(R.string.edit_client);
 
         Bundle extras = getIntent().getExtras();
 
@@ -53,6 +57,9 @@ public class EditClientActivity extends AppCompatActivity {
         cnpjEdit.setText(client.cnpj);
         ceEdit.setText(client.ce);
         addressEdit.setText(client.address);
+
+        cnpjEdit.addTextChangedListener(TextMask.watch(cnpjEdit,TextMask.FORMAT_CNPJ));
+        ceEdit.addTextChangedListener(TextMask.watch(ceEdit,TextMask.FORMAT_CE));
 
         registerSafe = false;
     }
@@ -117,8 +124,9 @@ public class EditClientActivity extends AppCompatActivity {
                 ce = ceEdit.getText().toString(),
                 addressString = addressEdit.getText().toString();
 
-        if(name.length() < 2 || cnpj.length()!=14)
+        if(name.length() < 2 || cnpj.length()!= TextMask.FORMAT_CNPJ.length() || ce.length()!=TextMask.FORMAT_CE.length())
         {
+            Toast.makeText(this,R.string.insert_all_message,Toast.LENGTH_SHORT).show();
             return false;
         }
 
@@ -138,6 +146,10 @@ public class EditClientActivity extends AppCompatActivity {
             Toast.makeText(this,R.string.invalid_clientaddress_message, Toast.LENGTH_LONG).show();
             return false;
         }
+    }
+
+    public void onHome(View view){
+        startActivity(new Intent(this, HomeActivity.class));
     }
 }
 

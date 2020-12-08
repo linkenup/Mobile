@@ -15,10 +15,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.linkenup.activities.NewDirectorActivity;
-import com.example.linkenup.code.ClientAdapter;
 import com.example.linkenup.code.DatabaseHelper;
 import com.example.linkenup.code.DirectorAdapter;
-import com.example.linkenup.system.Client;
 import com.example.linkenup.system.Director;
 
 public class DirectorActivity extends AppCompatActivity {
@@ -84,6 +82,10 @@ public class DirectorActivity extends AppCompatActivity {
             recyclerView.setLayoutManager(layoutManager);
         }
 
+        if(!resulting)findViewById(R.id.float_home_button).setVisibility(
+                getSharedPreferences(PreferenceActivity.FLOAT_HOME,0).getBoolean("bool",false)?
+                        View.VISIBLE:
+                        View.GONE);
     }
 
     public void onNew(View view) {
@@ -161,6 +163,10 @@ public class DirectorActivity extends AppCompatActivity {
             ((DirectorAdapter)recyclerView.getAdapter()).directorList = db.findDirector(stg,row);
             ((DirectorAdapter)recyclerView.getAdapter()).notifyDataSetChanged();
         }
+    }
+
+    public void onHome(View view){
+        startActivity(new Intent(this, HomeActivity.class));
     }
 
 }

@@ -13,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.linkenup.ContractActivity;
+import com.example.linkenup.HomeActivity;
+import com.example.linkenup.PreferenceActivity;
 import com.example.linkenup.R;
 import com.example.linkenup.code.DatabaseHelper;
 import com.example.linkenup.system.Contract;
@@ -30,6 +32,7 @@ public class OpenDirectorActivity extends AppCompatActivity {
     TextView idText, rgText, nameText, cpfText, professionText,addressText,nationalityText,civilStateText;
     Director director;
     int mode;
+    View changeButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +64,7 @@ public class OpenDirectorActivity extends AppCompatActivity {
         nationalityText = (TextView) findViewById(R.id.opendirector_text_nationality);
         civilStateText = (TextView) findViewById(R.id.opendirector_text_civilState);
         addressText = (TextView) findViewById(R.id.opendirector_text_address);
+        changeButton = findViewById(R.id.opendirector_button_change);
 
         DatabaseHelper db = new DatabaseHelper(this);
 
@@ -89,6 +93,16 @@ public class OpenDirectorActivity extends AppCompatActivity {
         nationalityText.setText(director.nationality);
         civilStateText.setText(director.civilState);
 
+        if(!NewContractActivity.REGISTERING){
+            findViewById(R.id.float_home_button).setVisibility(
+                    getSharedPreferences(PreferenceActivity.FLOAT_HOME,0).getBoolean("bool",false)?
+                            View.VISIBLE:
+                            View.GONE);
+        }
+
+        if(NewContractActivity.REGISTERING&&mode==OLDDIRECTOR_MODE){
+            changeButton.setVisibility(View.GONE);
+        }
     }
 
 
@@ -129,4 +143,9 @@ public class OpenDirectorActivity extends AppCompatActivity {
         intent.putExtra(ContractActivity.EXTRA_SEARCH_ROW, Contract.FK_DIRECTOR);
         startActivity(intent);
     }
+
+    public void onHome(View view){
+        startActivity(new Intent(this, HomeActivity.class));
+    }
+
 }

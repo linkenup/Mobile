@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="team_names">
+        <b>Analista de Sistemas e\n Banco de Dados</b>\n
+            Bruno Marciano Santos\n\n
+
+        <b>Desenvolvedor Back-End e Analista de Banco de Dados</b>\n
+            Davi Silva Oliveira\n\n
+
+        <b>Analista de Sistemas e Infraestrutra</b>\n
+            Guilherme Santos Andrade de Souza\n\n
+
+        <b>Desenvolvedor Mobile</b>\n
+            João Facin Demutti\n\n
+
+        <b>Desenvolvedor Front-End e Back-End</b>\n
+            Nícolas Rizzoli França\n\n
+
+        <b>Desenvolvedor Front-End</b>\n
+            Renan Damprelli Cardoso da Silva\n\n
+    </string>
+</resources>

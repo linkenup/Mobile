@@ -19,11 +19,13 @@
         android:id="@+id/itemcontract_text_clientname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
         android:textSize="@dimen/item_title_textSize" />
 
     <TextView
         android:id="@+id/itemcontract_text_softwarename"
         android:textSize="@dimen/item_subtitle_textSize"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom" />

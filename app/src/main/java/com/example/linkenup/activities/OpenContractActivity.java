@@ -1,9 +1,9 @@
 package com.example.linkenup.activities;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -18,6 +18,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.linkenup.HomeActivity;
+import com.example.linkenup.PreferenceActivity;
 import com.example.linkenup.R;
 import com.example.linkenup.code.DatabaseHelper;
 import com.example.linkenup.code.Us;
@@ -60,6 +62,8 @@ public class OpenContractActivity extends AppCompatActivity {
             beginHourText,
             endHourText;
 
+    boolean excluded;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +81,8 @@ public class OpenContractActivity extends AppCompatActivity {
             onBackPressed();
             return;
         }
+
+        excluded = false;
 
         changeButton = findViewById(R.id.opencontract_button_change);
         titleText = (TextView) findViewById(R.id.contract_title);
@@ -137,7 +143,13 @@ public class OpenContractActivity extends AppCompatActivity {
                     }
 
 
-                    if(db.removeContract(contract.id))Toast.makeText(this,R.string.remove_success_message,Toast.LENGTH_SHORT).show();
+                    if(db.removeContract(contract.id)){
+                        Toast.makeText(this,R.string.remove_success_message,Toast.LENGTH_SHORT).show();
+                        new Handler().postDelayed(()->{
+            			startActivity(new Intent(this,HomeActivity.class));
+            		},1000);
+                        excluded = true;
+                    }
                     else Toast.makeText(this, R.string.remove_failed_message,Toast.LENGTH_SHORT).show();
 
 
@@ -153,6 +165,12 @@ public class OpenContractActivity extends AppCompatActivity {
                     .show();
             return false;
         });
+
+            findViewById(R.id.float_home_button).setVisibility(
+                    getSharedPreferences(PreferenceActivity.FLOAT_HOME,0).getBoolean("bool",false)?
+                            View.VISIBLE:
+                            View.GONE);
+
         
         new Handler().post(()->{
             Address address;
@@ -184,11 +202,16 @@ public class OpenContractActivity extends AppCompatActivity {
             }
         });
 
+
         if(screenList != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (this.checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
                 this.requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 11);
             }
         }
+        if(NewContractActivity.REGISTERING){
+            changeButton.setVisibility(View.GONE);
+        }
+
     }
 
 
@@ -216,6 +239,8 @@ public class OpenContractActivity extends AppCompatActivity {
                 screenListString +="    "+getString(R.string.functions)+":\n";
                 screenListString +="    "+screenList[i].functions+"\n";
             }
+
+            if(clientAddress==null||directorAddress==null||directorAddress==null||workerDirectorAddress==null)return;
 
             Intent intent = new Intent();
             intent.putExtra(Intent.EXTRA_TEXT,getString(R.string.contract_template)
@@ -408,4 +433,13 @@ public class OpenContractActivity extends AppCompatActivity {
         Toast.makeText(this,R.string.remove_failed_message,Toast.LENGTH_LONG).show();
     }
 
+    @Override
+    public void onBackPressed() {
+        if(excluded) startActivity(new Intent(this, HomeActivity.class));
+        else super.onBackPressed();
+    }
+
+    public void onHome(View view){
+        startActivity(new Intent(this, HomeActivity.class));
+    }
 }

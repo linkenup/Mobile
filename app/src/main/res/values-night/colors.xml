@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="home_smallimg_text">#aaffffff</color>
+    <color name="divider_up">@color/purple</color>
+    <color name="editBorder">@color/simplegray</color>
 </resources>

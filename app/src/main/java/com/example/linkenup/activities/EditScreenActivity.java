@@ -3,8 +3,10 @@ package com.example.linkenup.activities;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -51,6 +54,9 @@ public class EditScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activities_editscreen);
 
+        ((TextView)findViewById(R.id.newscreen_title)).setText(R.string.edit_screen);
+
+
         Bundle extras = getIntent().getExtras();
         if(extras==null){
             onBackPressed();
@@ -76,6 +82,17 @@ public class EditScreenActivity extends AppCompatActivity {
         functionsEdit = (EditText) findViewById(R.id.newscreen_edit_functions);
         imageView = (ImageView) findViewById(R.id.newscreen_screen_image);
         clipButton = findViewById(R.id.newscreen_floatbutton_image);
+
+        SharedPreferences imageBorder = getSharedPreferences(OpenScreenActivity.IMAGE_BORDER_PREFERENCE,0);
+
+        boolean isColor =  imageBorder.getBoolean("bool",false);
+        int color = imageBorder.getInt("color", Color.rgb(0,0,166));
+
+        if(isColor){
+            float padding = getResources().getDimension(R.dimen.screen_imageBorder_size);
+            imageView.setPadding((int)padding,(int)padding,(int)padding,(int)padding);
+            imageView.setBackgroundColor(color);
+        }
 
         ViewGroup.LayoutParams layout =  imageView.getLayoutParams();
         if(getResources().getConfiguration().orientation== Configuration.ORIENTATION_LANDSCAPE){
@@ -129,10 +146,11 @@ public class EditScreenActivity extends AppCompatActivity {
 
 
         if(mode==ScreenActivity.NEWSOFTWARE_MODE){
-            screen = new Screen(screen.fkSoftware,name,functions,imageURI);
+            screen = new Screen(name,functions,imageURI);
             NewSoftwareActivity.SCREEN_LIST.set(screenPosition,screen);
             backSafe = true;
             Toast.makeText(this,getString(R.string.screen_add_message),Toast.LENGTH_SHORT).show();
+            OpenScreenActivity.CHANGED = true;
             onBackPressed();
         }
         if(mode==ScreenActivity.OLDSOFTWARE_MODE) {
@@ -200,5 +218,9 @@ public class EditScreenActivity extends AppCompatActivity {
             imageURI = uri.toString();
             imageView.setImageURI(uri);
         }
+    }
+
+    public void onHome(View view){
+        startActivity(new Intent(this, HomeActivity.class));
     }
 }

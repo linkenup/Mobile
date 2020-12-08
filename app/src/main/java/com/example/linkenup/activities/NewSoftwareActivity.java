@@ -36,6 +36,9 @@ public class NewSoftwareActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activities_editsoftware);
 
+
+        SCREEN_LIST = new ArrayList<Screen>();
+
         nameEdit = (EditText) findViewById(R.id.newsoftware_edit_name);
         descrEdit = (EditText) findViewById(R.id.newsoftware_edit_description);
         supportsEdit = (EditText) findViewById(R.id.newsoftware_edit_supports);

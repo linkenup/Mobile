@@ -2,7 +2,9 @@ package com.example.linkenup.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,6 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.linkenup.HomeActivity;
 import com.example.linkenup.R;
 import com.example.linkenup.ScreenActivity;
 import com.example.linkenup.code.DatabaseHelper;
@@ -62,6 +65,17 @@ public class NewScreenActivity extends AppCompatActivity {
         functionsEdit = (EditText) findViewById(R.id.newscreen_edit_functions);
         imageView = (ImageView) findViewById(R.id.newscreen_screen_image);
         clipButton = (View) findViewById(R.id.newscreen_floatbutton_image);
+
+        SharedPreferences imageBorder = getSharedPreferences(OpenScreenActivity.IMAGE_BORDER_PREFERENCE,0);
+
+        boolean isColor =  imageBorder.getBoolean("bool",false);
+        int color = imageBorder.getInt("color", Color.rgb(0,0,255));
+
+        if(isColor){
+            float padding = getResources().getDimension(R.dimen.screen_imageBorder_size);
+            imageView.setPadding((int)padding,(int)padding,(int)padding,(int)padding);
+            imageView.setBackgroundColor(color);
+        }
 
         ViewGroup.LayoutParams layout =  imageView.getLayoutParams();
         if(getResources().getConfiguration().orientation== Configuration.ORIENTATION_LANDSCAPE){
@@ -164,4 +178,7 @@ public class NewScreenActivity extends AppCompatActivity {
             imageView.setImageURI(uri);
         }
         }
+
+
+
 }

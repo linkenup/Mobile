@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -50,6 +51,9 @@ public class EditContractActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activities_editcontract);
+
+        ((TextView)findViewById(R.id.newcontract_title)).setText(R.string.edit_contract);
+
 
         Bundle extras = getIntent().getExtras();
 
@@ -252,5 +256,9 @@ public class EditContractActivity extends AppCompatActivity {
             new Handler().postDelayed(() -> {backSafe=false;},5000);
         }
         else super.onBackPressed();
+    }
+
+    public void onHome(View view){
+        startActivity(new Intent(this, HomeActivity.class));
     }
 }

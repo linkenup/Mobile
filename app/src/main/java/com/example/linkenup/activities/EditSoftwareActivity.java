@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -39,6 +40,9 @@ public class EditSoftwareActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activities_editsoftware);
+
+        ((TextView)findViewById(R.id.newsoftware_title)).setText(R.string.edit_software);
+
 
         Bundle extras = getIntent().getExtras();
         if(!(extras.getInt(EXTRA_SOFTWARE_ID,0)>0))
@@ -113,6 +117,10 @@ public class EditSoftwareActivity extends AppCompatActivity {
             new Handler().postDelayed(() -> {backSafe=false;},5000);
         }
         else super.onBackPressed();
+    }
+
+    public void onHome(View view){
+        startActivity(new Intent(this, HomeActivity.class));
     }
 
 }

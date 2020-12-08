@@ -17,9 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.linkenup.HomeActivity;
 import com.example.linkenup.R;
 import com.example.linkenup.code.DatabaseHelper;
+import com.example.linkenup.code.TextMask;
 import com.example.linkenup.system.Client;
-
-import java.io.IOException;
 
 public class NewClientActivity extends AppCompatActivity {
 
@@ -37,6 +36,8 @@ public class NewClientActivity extends AppCompatActivity {
         ceEdit = (EditText) findViewById(R.id.newclient_edit_ce);
         addressEdit = (EditText) findViewById(R.id.newclient_edit_address);
 
+        cnpjEdit.addTextChangedListener(TextMask.watch(cnpjEdit,TextMask.FORMAT_CNPJ));
+        ceEdit.addTextChangedListener(TextMask.watch(ceEdit,TextMask.FORMAT_CE));
     }
 
     public void onRegister(View view){
@@ -95,8 +96,9 @@ public class NewClientActivity extends AppCompatActivity {
                 ce = ceEdit.getText().toString(),
                 addressString = addressEdit.getText().toString();
 
-        if(name.length() < 2 || cnpj.length()!=14)
+        if(name.length() < 2 || cnpj.length()!= TextMask.FORMAT_CNPJ.length() || ce.length()!=TextMask.FORMAT_CE.length())
         {
+            Toast.makeText(this,R.string.insert_all_message,Toast.LENGTH_SHORT).show();
             return false;
         }
 

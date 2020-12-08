@@ -14,10 +14,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.linkenup.activities.NewSoftwareActivity;
-import com.example.linkenup.code.ClientAdapter;
 import com.example.linkenup.code.DatabaseHelper;
 import com.example.linkenup.code.SoftwareAdapter;
-import com.example.linkenup.system.Client;
 import com.example.linkenup.system.Software;
 
 public class SoftwareActivity extends AppCompatActivity {
@@ -62,6 +60,10 @@ public class SoftwareActivity extends AppCompatActivity {
             recyclerView.setAdapter(adapter);
             recyclerView.setLayoutManager(layoutManager);
         }
+        if(!resulting)findViewById(R.id.float_home_button).setVisibility(
+                getSharedPreferences(PreferenceActivity.FLOAT_HOME,0).getBoolean("bool",false)?
+                        View.VISIBLE:
+                        View.GONE);
     }
 
     public void resultSoftware(Software software){
@@ -113,5 +115,9 @@ public class SoftwareActivity extends AppCompatActivity {
             ((SoftwareAdapter)recyclerView.getAdapter()).softwareList = db.findSoftware(stg,row);
             ((SoftwareAdapter)recyclerView.getAdapter()).notifyDataSetChanged();
         }
+    }
+
+    public void onHome(View view){
+        startActivity(new Intent(this, HomeActivity.class));
     }
 }

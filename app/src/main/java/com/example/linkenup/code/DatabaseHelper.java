@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.linkenup.R;
 import com.example.linkenup.system.Client;
 import com.example.linkenup.system.Contract;
 import com.example.linkenup.system.Director;
@@ -66,7 +67,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 Software.SUPPORTS + " text" +
                 ")");
 
-        String screenSoftwareForeginKey = "foreign key ("+Screen.FK_SOFTWARE+") references "+TABLE_SOFTWARE+"("+Software.ID+") ";
+        String screenSoftwareForeginKey = "foreign key ("+Screen.FK_SOFTWARE+") references "+TABLE_SOFTWARE+"("+Software.ID+") on delete cascade";
         db.execSQL("create table "+TABLE_SCREEN+"(" +
                 Screen.ID + " integer primary key, " +
                 Screen.FK_SOFTWARE + " integer not null, " +
@@ -76,7 +77,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 screenSoftwareForeginKey+
                 ")");
 
-        String directorClientForeginKey = "foreign key ("+Director.FK_CLIENT+") references "+TABLE_CLIENT+"("+Client.ID+")";
+        String directorClientForeginKey = "foreign key ("+Director.FK_CLIENT+") references "+TABLE_CLIENT+"("+Client.ID+") on delete cascade";
         db.execSQL("create table "+TABLE_DIRECTOR+"(" +
                 Director.ID + " integer primary key, " +
                 Director.FK_CLIENT + " integer not null, " +
@@ -90,11 +91,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 directorClientForeginKey+
                 ")");
 
-        String contractClientForeginKey = "foreign key ("+Contract.FK_CLIENT+") references "+TABLE_CLIENT+"("+Client.ID+"), ";
-        String contractSoftwareForeginKey = "foreign key ("+Contract.FK_SOFTWARE+") references "+TABLE_SOFTWARE+"("+Software.ID+"), ";
-        String contractWorkerDirectorForeginKey = "foreign key ("+Contract.FK_WORKER_DIRECTOR+") references "+TABLE_WORKER+"("+Worker.ID+"), ";
-        String contractWorkerConsultantForeginKey = "foreign key ("+Contract.FK_WORKER_CONSULTANT+") references "+TABLE_WORKER+"("+Worker.ID+"), ";
-        String contractDirectorForeginKey = "foreign key ("+Contract.FK_DIRECTOR+") references "+TABLE_DIRECTOR+"("+Director.ID+") ";
+        String contractClientForeginKey = "foreign key ("+Contract.FK_CLIENT+") references "+TABLE_CLIENT+"("+Client.ID+")  on delete restrict, ";
+        String contractSoftwareForeginKey = "foreign key ("+Contract.FK_SOFTWARE+") references "+TABLE_SOFTWARE+"("+Software.ID+")  on delete restrict, ";
+        String contractWorkerDirectorForeginKey = "foreign key ("+Contract.FK_WORKER_DIRECTOR+") references "+TABLE_WORKER+"("+Worker.ID+")  on delete restrict, ";
+        String contractWorkerConsultantForeginKey = "foreign key ("+Contract.FK_WORKER_CONSULTANT+") references "+TABLE_WORKER+"("+Worker.ID+")  on delete restrict, ";
+        String contractDirectorForeginKey = "foreign key ("+Contract.FK_DIRECTOR+") references "+TABLE_DIRECTOR+"("+Director.ID+")  on delete restrict ";
         db.execSQL("create table "+ TABLE_CONTRACT + "(" +
                 Contract.ID + " integer primary key, " +
                 Contract.FK_CLIENT + " integer not null, " +
@@ -940,7 +941,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean removeWorker(int id) {
         SQLiteDatabase db = getWritableDatabase();
         if(fkContract(id,Contract.FK_WORKER_CONSULTANT)!=null||fkContract(id,Contract.FK_WORKER_DIRECTOR)!=null)return false;
-        db.delete(TABLE_DIRECTOR,Worker.ID+" = "+String.valueOf(id),null);
+        db.delete(TABLE_WORKER,Worker.ID+" = "+String.valueOf(id),null);
         return  true;
     }
 
@@ -1036,5 +1037,199 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(Screen.FUNCTIONS,screen.functions);
         values.put(Screen.URI,screen.uri!=null?screen.uri:"NULL");
         return db.update(TABLE_SCREEN, values, Screen.ID+" = "+String.valueOf(screen.id),null);
+    }
+
+    public void insertOLD() {
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL(
+                "insert into worker( " +
+                        "                id, " +
+                        "                name, " +
+                        "                rg, " +
+                        "                cpf, " +
+                        "                ctps, " +
+                        "                profession, " +
+                        "                nationality, " +
+                        "                address, " +
+                        "                civilState " +
+                        "             ) values " +
+                        "        (1, " +
+                        "        'Bruno Marciano', " +
+                        "        '59.183.341-93', " +
+                        "        '678.923.123-4', " +
+                        "        '091232 88234-SP', " +
+                        "        'Analista', " +
+                        "        'Brasileiro', " +
+                        "        '02961-210', " +
+                        "        'Solteiro' " +
+                        "        ), " +
+                        " " +
+                        "        (2, " +
+                        "        'Renan Damprelli', " +
+                        "        '53.284.123-93', " +
+                        "        '123.421.173-1', " +
+                        "        '094521 34133-SP', " +
+                        "        'Designer', " +
+                        "        'Brasileiro', " +
+                        "        'Rua Tarcon, 81 Perus bro', " +
+                        "        'Solteiro' " +
+                        "        );");
+
+        db.execSQL(
+                "insert into client(id,name,cnpj,ce,address) values  " +
+                        "        (1, " +
+                        "        'teste-me-exclue', " +
+                        "        '99.999.999/9999-99', " +
+                        "        '99.999999-9', " +
+                        "        '05125-040' " +
+                        "        ), " +
+                        "         " +
+                        "        (2, " +
+                        "        'Goal', " +
+                        "        '33.425.291/9891-72', " +
+                        "        '51.667721-9', " +
+                        "        'Villa Lobbos São Paulo' " +
+                        "        ), " +
+                        "         " +
+                        "        (3, " +
+                        "        'Cherry Bomb', " +
+                        "        '51.222.931/9090-22', " +
+                        "        '51.667721-9', " +
+                        "        'Parque São Domingos São Paulo' " +
+                        "        );");
+
+        db.execSQL(
+                "insert into software (id,name,description,supports) values  " +
+                        "        (1, " +
+                        "        'Site Esportivo', " +
+                        "        'Site onepage responsivo com tema esportivo', " +
+                        "        NULL " +
+                        "        ), " +
+                        "        (2, " +
+                        "        'Transporte C#local', " +
+                        "        'Sistema C# de gerenciamento de empresas de transportes', " +
+                        "        NULL " +
+                        "        );"
+                            );
+        db.execSQL(
+                "        insert into screen (id,softwareID,name,functions,uri) values " +
+                "        (1, " +
+                "        1, " +
+                "        'Principal', " +
+                "        'Site onepage', " +
+                "        NULL " +
+                "        ), " +
+                " " +
+                "        (2, " +
+                "        2, " +
+                "        'Home', " +
+                "        'Navegação', " +
+                "        NULL " +
+                "        );");
+
+        db.execSQL("insert into director ( " +
+                "        id, " +
+                "        fkClient, " +
+                "        name, " +
+                "        rg, " +
+                "        cpf, " +
+                "        profession, " +
+                "        address, " +
+                "        nationality, " +
+                "        civilState) " +
+                "        values " +
+                "         " +
+                "        (1,1,  " +
+                "        'TESTE', " +
+                "        '99.999.999-99', " +
+                "        '999.999.999-9', " +
+                "        'Testador', " +
+                "        '88888-888', " +
+                "        'Brasileiro', " +
+                "        'Viuvo'), " +
+                "         " +
+                "        (2,2, " +
+                "        'Roberto Silva', " +
+                "        '93.123.453.22', " +
+                "        '514.291.330-3', " +
+                "        'Gerente de estabelecimento comercial', " +
+                "        '90912-123', " +
+                "        'Brasileiro', " +
+                "        'Viuvo' " +
+                "        ), " +
+                " " +
+                "        (3,3, " +
+                "        'Ronaldo Antonino', " +
+                "        '94.213.522.33', " +
+                "        '313.124.356-4', " +
+                "        'Gerente de empresa de transportes', " +
+                "        '29019-321', " +
+                "        'Brasileiro', " +
+                "        'Viuvo' " +
+                "        ); ");
+
+        db.execSQL("insert into contract ( " +
+                "            id, " +
+                "            fkClient, " +
+                "            fkSoftware, " +
+                "            fkWorkerDirector, " +
+                "            fkWorkerConsultant, " +
+                "            fkDirector, " +
+                "            monthValue, " +
+                "            bank, " +
+                "            agency, " +
+                "            account, " +
+                "            daysConsultant, " +
+                "            hoursConsultant, " +
+                "            beginHour, " +
+                "            endHour) " +
+                "        values " +
+                "        (1, " +//id
+                "        2, " +//client
+                "        1, " +//software
+                "        2, " +//work
+                "        2, " +//work
+                "        2, " +//dir
+                "        55, " +//month
+                "        'Banco Brasil', " +//bank
+                "        'AgenciaNacional', " +//agency
+                "        '00123', " +//account
+                "        4, " +
+                "        8, " +
+                "        6, " +
+                "        18 " +
+                "        ), " +
+                " " +
+                "        (2, " +
+                "        3, " +
+                "        2, " +
+                "        1, " +
+                "        2, " +
+                "        3, " +
+                "        105, " +
+                "        'Italu', " +
+                "        'NoNationalAgency', " +
+                "        '99321', " +
+                "        2, " +
+                "        6, " +
+                "        7, " +
+                "        17 " +
+                "        ), " +
+                " " +
+                "        (3, " +
+                "        1, " +
+                "        2, " +
+                "        2, " +
+                "        1, " +
+                "        1, " +
+                "        80, " +
+                "        'Banco Nacional', " +
+                "        'Agenciadorasil', " +
+                "        '022031', " +
+                "        4, " +
+                "        12, " +
+                "        9, " +
+                "        20 " +
+                "        );");
     }
 }

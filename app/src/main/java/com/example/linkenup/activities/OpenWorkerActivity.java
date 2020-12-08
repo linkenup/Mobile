@@ -6,11 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.linkenup.ContractActivity;
+import com.example.linkenup.HomeActivity;
+import com.example.linkenup.PreferenceActivity;
 import com.example.linkenup.R;
 import com.example.linkenup.code.DatabaseHelper;
 import com.example.linkenup.system.Contract;
@@ -34,6 +37,8 @@ public class OpenWorkerActivity extends AppCompatActivity {
 
         View changeButton;
 
+        boolean excluded;
+
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -46,6 +51,9 @@ public class OpenWorkerActivity extends AppCompatActivity {
                 onBackPressed();
                 return;
             }
+
+            excluded = true;
+
             idText = (TextView) findViewById(R.id.openworker_text_id);
             nameText = (TextView) findViewById(R.id.openworker_text_name);
             cpfText = (TextView) findViewById(R.id.openworker_text_cpf);
@@ -76,7 +84,13 @@ public class OpenWorkerActivity extends AppCompatActivity {
                 DialogInterface.OnClickListener listener =  (DialogInterface dialog, int which)->{
                     if(which==DialogInterface.BUTTON_POSITIVE)
                     {
-                        if(db.removeWorker(worker.id))Toast.makeText(this,R.string.remove_success_message,Toast.LENGTH_SHORT).show();
+                        if(db.removeWorker(worker.id)){
+                            Toast.makeText(this,R.string.remove_success_message,Toast.LENGTH_SHORT).show();
+                            new Handler().postDelayed(()->{
+                                startActivity(new Intent(this,HomeActivity.class));
+                            },1000);
+                            excluded = true;
+                        }
                         else Toast.makeText(this, R.string.remove_failed_message,Toast.LENGTH_SHORT).show();
                     }
                 };
@@ -90,6 +104,16 @@ public class OpenWorkerActivity extends AppCompatActivity {
                 return false;
             });
 
+            if(!NewContractActivity.REGISTERING){
+                findViewById(R.id.float_home_button).setVisibility(
+                        getSharedPreferences(PreferenceActivity.FLOAT_HOME,0).getBoolean("bool",false)?
+                                View.VISIBLE:
+                                View.GONE);
+            }
+
+            if(NewContractActivity.REGISTERING){
+                changeButton.setVisibility(View.GONE);
+            }
         }
 
         public void onUpdate(View view){
@@ -116,5 +140,15 @@ public class OpenWorkerActivity extends AppCompatActivity {
                 intent.putExtra(ContractActivity.EXTRA_SEARCH_ROW, Contract.FK_WORKER_DIRECTOR);
             }
         startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(excluded) startActivity(new Intent(this, HomeActivity.class));
+        else super.onBackPressed();
+    }
+
+    public void onHome(View view){
+        startActivity(new Intent(this, HomeActivity.class));
     }
 }

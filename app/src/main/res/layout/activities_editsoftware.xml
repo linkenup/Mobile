@@ -30,7 +30,6 @@
         android:id="@+id/newsoftware_title"
         android:text="@string/newsoftware"
         android:drawableStart="@drawable/ic_software_48"
-        android:drawableTint="@color/strongblue"
         style="@style/Title"/>
 
     <EditText

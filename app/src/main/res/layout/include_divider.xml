@@ -9,7 +9,7 @@
         android:layout_marginStart="@dimen/home_divider_marginside"
         android:layout_marginEnd="@dimen/home_divider_marginside"
         android:background="@drawable/shape_divider"
-        android:backgroundTint="?colorPrimaryVariant"
+        android:backgroundTint="@color/divider_up"
         android:visibility="visible" />
     <View
         android:layout_marginTop="@dimen/divider2_marginTop"
@@ -19,7 +19,7 @@
         android:layout_marginStart="@dimen/home_divider_marginside2"
         android:layout_marginEnd="@dimen/home_divider_marginside2"
         android:background="@drawable/shape_divider"
-        android:backgroundTint="?colorSecondaryVariant"
+        android:backgroundTint="@color/lowblue"
         android:visibility="visible" />
 
 </LinearLayout>

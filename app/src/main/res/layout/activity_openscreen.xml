@@ -50,5 +50,6 @@
                 android:layout_gravity="center_horizontal"/>
         </LinearLayout>
     </ScrollView>
-
+    <include
+        layout="@layout/include_home_floatbutton"/>
 </LinearLayout>

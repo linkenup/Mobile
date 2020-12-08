@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.linkenup.activities.NewContractActivity;
 import com.example.linkenup.activities.NewScreenActivity;
 import com.example.linkenup.activities.NewSoftwareActivity;
 import com.example.linkenup.code.DatabaseHelper;
@@ -106,6 +107,11 @@ public class ScreenActivity extends AppCompatActivity {
         {
             Toast.makeText(this,R.string.no_screenfound_message,Toast.LENGTH_SHORT).show();
         }
+
+        if(mode!=NEWSOFTWARE_MODE&& !NewContractActivity.REGISTERING)findViewById(R.id.float_home_button).setVisibility(
+                getSharedPreferences(PreferenceActivity.FLOAT_HOME,0).getBoolean("bool",false)?
+                        View.VISIBLE:
+                        View.GONE);
     }
 
 
@@ -121,6 +127,15 @@ public class ScreenActivity extends AppCompatActivity {
                 recyclerView.getAdapter().notifyDataSetChanged();
             }
         }}
+        if(mode == ScreenActivity.OLDSOFTWARE_MODE){
+            screenList = db.getAllScreen(softwareID);
+            if(recyclerView.getAdapter()!=null){
+                if(screenList!=((ScreenAdapter)recyclerView.getAdapter()).screenList) {
+                    ((ScreenAdapter)recyclerView.getAdapter()).screenList = screenList;
+                    recyclerView.getAdapter().notifyDataSetChanged();
+                }
+            }
+        }
     }
 
     public void onNew(View view) {
@@ -132,4 +147,8 @@ public class ScreenActivity extends AppCompatActivity {
 
 
     public void onBack(View view) { onBackPressed(); }
+
+    public void onHome(View view){
+        startActivity(new Intent(this, HomeActivity.class));
+    }
 }

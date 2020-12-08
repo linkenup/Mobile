@@ -72,4 +72,6 @@ tools:context=".activities.OpenWorkerActivity">
 
         </LinearLayout>
     </ScrollView>
+    <include
+        layout="@layout/include_home_floatbutton"/>
 </LinearLayout>

@@ -7,6 +7,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.Toast;
+
+import com.example.linkenup.code.DatabaseHelper;
+import com.example.linkenup.system.Worker;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -22,6 +26,15 @@ public class SplashActivity extends AppCompatActivity {
         else
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
-        new Handler().postDelayed(() -> startActivity(new Intent(getApplicationContext(),HomeActivity.class)),2000);
+
+        DatabaseHelper db = new DatabaseHelper(getApplicationContext());
+        if(db.getAllWorker()==null&&db.getAllClient()==null&&db.getAllSoftware()==null){
+
+            Toast.makeText(this,R.string.insert_old_message,Toast.LENGTH_LONG).show();
+            db.sqliteUpgrade();
+            db.insertOLD();
+
+        }
+        startActivity(new Intent(getApplicationContext(),HomeActivity.class));
     }
 }

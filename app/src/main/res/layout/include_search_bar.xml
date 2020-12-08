@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical">
 
     <EditText
         android:tag="searchedittag"
         android:id="@+id/search_edit"
         style="@style/Field.Edit"
-        android:layout_margin="4dp"
-        android:layout_width="@dimen/search_edit_width"
+        android:layout_marginStart="@dimen/search_marginHorizontal"
+        android:layout_marginEnd="@dimen/search_marginHorizontal"
+        android:layout_height="@dimen/search_height"
+        android:layout_width="match_parent"
         android:hint="@string/search"/>
-    <Button
+
+    <ImageButton
         android:id="@+id/search_button"
-        style="@style/Button"
-        android:layout_width="wrap_content"
-        android:theme="@style/Theme.LinkenUp.Button"
-        android:text="@string/search"
-        android:onClick="onSearch"/>
+        android:layout_width="@dimen/search_button_width"
+        android:layout_height="@dimen/search_height"
+        android:layout_marginStart="@dimen/search_button_marginLeft"
+        android:background="@drawable/shape_search_button"
+        android:onClick="onSearch"
+        android:src="@drawable/ic_search_36" />
 </LinearLayout>

@@ -8,7 +8,8 @@
         <item name="android:layout_marginEnd">@dimen/title_margin</item>
         <item name="android:layout_marginBottom">@dimen/title_margin</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="drawableTint">@color/strongblue</item>
+        <item name="android:textStyle">bold</item>
+        <item name="drawableTint">?colorAccent</item>
     </style>
 
     <style name="Field">
@@ -30,7 +31,6 @@
         <item name="android:textSize">@dimen/button_textsize</item>
         <item name="android:layout_gravity">center_horizontal</item>
     </style>
-
 
     <style name="Field.Edit">
         <item name="android:background">@drawable/shape_edit_text</item>
